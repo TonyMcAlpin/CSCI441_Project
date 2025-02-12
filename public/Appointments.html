@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css"/>
     <title>Appointments</title>
 </head>
 <body>
@@ -19,11 +20,32 @@
     </nav>
     <main>
         <form method="get">
-            <label for="appointmentDate">Date:</label><input type="date" name="appointmentDate" id="appointmentDate"><br><br>
-            <label for="medTitle">Medical Title: </label><input type="text" name="medTitle" id="medTitle"><br><br>
-            <label for="medicalProfessional">Medical Professional: </label><input type="text" name="medicalProfessional" id="medicalProfessional"><br><br>
-            <label for="appointmentPurpose">Purpose: </label><input type="text" name="appointmentPurpose" id="appointmentPurpose"><br><br>
-            <input id="userSubmit" type="submit" value="Submit">
+            </div>
+            <div class = "label-input">
+                <label for="appointmentDate">Date:</label>
+                <input type="date" name="appointmentDate" id="appointmentDate">
+            </div>
+            <div class = "label-input">
+                <label for="medTitle">Medical Title: </label>
+                <input type="text" name="medTitle" id="medTitle">
+            </div>
+            <div class = "label-input">
+                <label for="medicalProfessional">Provider Name:</label>
+                <input type="text" name="medicalProfessional" id="medicalProfessional">
+            </div>
+            <div class = "label-input">
+                <label for="appointmentPurpose">Purpose: </label>
+                <input type="text" name="appointmentPurpose" id="appointmentPurpose">
+            </div>
+            <div class = "label-input">
+                <label for="phoneNumber">Phone number:</label>
+                <input type="tel" name="phoneNumber" id="phoneNumber">
+            </div>
+            <div class = "label-input">
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="email">
+            </div>
+                <input id="userSubmit" type="submit" value="Submit">
         </form><br>
     </main>
     <footer><a href="contactus.html">Contact Us</a></footer>

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css"/>
     <title>Medications</title>
 </head>
 <body>
@@ -19,16 +20,41 @@
     </nav>
     <main>
         <form method="get">
-            <label for="startDate">Start Date:</label><input type="date" name="startDate" id="startDate">
-            <label for="endDate">Start Date:</label><input type="date" name="endDate" id="endDate"><br><br>
-            <label for="prescriber">Prescriber:</label><input type="text" name="Prescriber" id="Prescriber"><br><br>
-            <label for="medication">Medication:</label><input type="text" name="medication" id="medication"><br><br>
-            <label for="quantity">Quantity:</label><input type="text" name="quantity" id="quantity">
-            <label for="quantityUnits">units:</label><input type="text" name="quantityUnits" id="quantityUnits"><br><br>
-            <label for="frequency">Frequency:</label><input type="text" name="frequency" id="frequency">        
-            <label for="frequencyUnits">units:</label><input type="text" name="frequencyUnits" id="frequencyUnits"><br><br>
-            <label for="Side Effects">Side Effects:</label><br>
-            <textarea name="userComments" id="userComments" rows="2" cols="30"></textarea><br>
+            <div class = "label-input">
+                <label for="startDate">Start Date:</label>
+                <input type="date" name="startDate" id="startDate">
+
+                <label for="endDate">Start Date:</label>
+                <input type="date" name="endDate" id="endDate">
+            </div>
+            <div class = "label-input">
+                <label for="prescriber">Prescriber:</label>
+                <input type="text" name="Prescriber" id="Prescriber">
+            </div>
+            <div class = "label-input">
+                <label for="medication">Medication:</label>
+                <input type="text" name="medication" id="medication">
+            </div>
+            <div class = "label-input">
+                <label for="quantity">Quantity:</label>
+                <input type="text" name="quantity" id="quantity">
+            </div>
+            <div class = "label-input">
+                <label for="quantityUnits">units:</label>
+                <input type="text" name="quantityUnits" id="quantityUnits">
+            </div>
+            <div class = "label-input">
+                <label for="frequency">Frequency:</label>
+                <input type="text" name="frequency" id="frequency">        
+            </div>
+            <div class = "label-input">
+                <label for="frequencyUnits">units:</label>
+                <input type="text" name="frequencyUnits" id="frequencyUnits">
+            </div>
+            <div class = "label-input">
+                <label for="Side Effects">Side Effects:</label>
+                <textarea name="userComments" id="userComments" rows="4" cols="20"></textarea>
+            </div>
             <input id="userSubmit" type="submit" value="Submit">
         </form><br>
     </main>

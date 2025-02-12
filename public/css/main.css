@@ -21,22 +21,42 @@
         border-radius: 5px;
     }
 
+    form {
+        color: black;
+        display: grid;
+        gap: 10px; 
+    }
+    
+    .label-input {
+        display: flex;
+    }
+    
+    label {
+        min-width: 100px; 
+        text-align: left;
+    }
+    
+    input {
+        width: 100%;
+    }
+
+
 @media (min-width: 375px){
 
 
     nav ul { 
         list-style-type: none;
-        margin: 10px;
         padding-left: 0;
         font-size: 1.7em; 
     }
     nav li { 
         background: #8b0000;
-        border-bottom: 3px solid #eb4d55; }
+        border-bottom: 3px solid #eb4d55; 
+    }
     nav a:link { color: white; }
     nav a:visited {color: gray; }
     nav a:hover { color: white;
-                    background: gray }
+                    background: #8b0000; }
 
 
     footer{
@@ -46,5 +66,9 @@
         color: white;
         border-radius: 5px;
     }
+    footer a:link { color: white; }
+    footer a:visited {color: gray; }
+    footer a:hover { color: white;
+                    background: gray }
 }
 

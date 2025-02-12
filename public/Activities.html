@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css"/>
     <title>Activities</title>
 </head>
 <body>
@@ -19,9 +20,18 @@
     </nav>
     <main>
         <form method="get">
-            <label for="activityDate">Date:</label><input type="date" name="activityDate" id="activityDate"><br><br>
-            <label for="activityDuration">Duration: </label><input type="text" name="activityDuration" id="activityDuration">   <br><br>
-            <label for="activityDescription">Description: </label><input type="text" name="activityDescription" id="activityDescription">   <br><br>
+            <div class = "label-input">
+                <label for="activityDate">Date:</label>
+                <input type="date" name="activityDate" id="activityDate">
+            </div>
+            <div class = "label-input">
+                <label for="activityDuration">Duration: </label>
+                <input type="text" name="activityDuration" id="activityDuration"> 
+            </div>
+            <div class = "label-input">
+                <label for="activityDescription">Description: </label>
+                <input type="text" name="activityDescription" id="activityDescription">  
+            </div>
             <input id="userSubmit" type="submit" value="Submit">
         </form><br>
     
