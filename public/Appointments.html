@@ -1,53 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/main.css"/>
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
+
     <title>Appointments</title>
 </head>
 <body>
-    <header>
+    <header class="mb-4 pt-4 pb-4">
         <h1>Appointments</h1>
     </header>
     <nav>
         <ul>
             <li><a href="index.html">Home</a></li>
-            <li><a href="Appointments.html">Appointments</a></li>
+            <li><a href="Appointments.html" class="active">Appointments</a></li>
             <li><a href="Activities.html">Activities</a></li>
             <li><a href="Medications.html">Medications</a></li>
-        </ul> 
+        </ul>
     </nav>
     <main>
-        <form method="get">
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4 col-sm-12">
+                <div class="card">
+                    <div class="card-header" style="background-color: #8b0000; color: white;">
+                        Add Appointment
+                    </div>
+                    <div class="card-body" style="background-color: #ff6666; color:white;">
+                <form method="get">
+                    <div>
+                        <label for="appointmentDate" class="form-label">Date:</label>
+                        <input type="date" class="form-control" name="appointmentDate" id="appointmentDate">
+                    </div>
+                    <div>
+                        <label for="medTitle" class="form-label">Medical Title: </label>
+                        <input type="text" class="form-control" name="medTitle" id="medTitle" placeholder="Dentist, Pediatrician, etc...">
+                    </div>
+                    <div>
+                        <label for="medicalProfessional" class="form-label">Provider Name:</label>
+                        <input type="text" class="form-control" name="medicalProfessional" id="medicalProfessional" placeholder="Name of Physician">
+                    </div>
+                    <div>
+                        <label for="appointmentPurpose" class="form-label">Purpose: </label>
+                        <input type="text" class="form-control" name="appointmentPurpose" id="appointmentPurpose" placeholder="Checkup, Vaccination, etc...">
+                    </div>
+                    <div>
+                        <label for="phoneNumber" class="form-label">Phone number:</label>
+                        <input type="tel" class="form-control" name="phoneNumber" id="phoneNumber" placeholder="Number for the Provider">
+                    </div>
+                    <div>
+                        <label for="email" class="form-label">Email:</label>
+                        <input type="email" class="form-control" name="email" id="email" placeholder="Email for the Provider, if Applicable">
+                    </div>
+                    <button id="userSubmit" class="btn" type="submit" style="background-color: #8b0000; color: white;">Submit</button>   
+
+                </form>
             </div>
-            <div class = "label-input">
-                <label for="appointmentDate">Date:</label>
-                <input type="date" name="appointmentDate" id="appointmentDate">
             </div>
-            <div class = "label-input">
-                <label for="medTitle">Medical Title: </label>
-                <input type="text" name="medTitle" id="medTitle">
             </div>
-            <div class = "label-input">
-                <label for="medicalProfessional">Provider Name:</label>
-                <input type="text" name="medicalProfessional" id="medicalProfessional">
-            </div>
-            <div class = "label-input">
-                <label for="appointmentPurpose">Purpose: </label>
-                <input type="text" name="appointmentPurpose" id="appointmentPurpose">
-            </div>
-            <div class = "label-input">
-                <label for="phoneNumber">Phone number:</label>
-                <input type="tel" name="phoneNumber" id="phoneNumber">
-            </div>
-            <div class = "label-input">
-                <label for="email">Email:</label>
-                <input type="email" name="email" id="email">
-            </div>
-                <input id="userSubmit" type="submit" value="Submit">
-        </form><br>
+        </div><br>
+        <div class="col-md-4"></div>
+
     </main>
-    <footer><a href="contactus.html">Contact Us</a></footer>
 </body>
+<footer><a href="contactus.html">Contact Us</a></footer>
+
 </html>

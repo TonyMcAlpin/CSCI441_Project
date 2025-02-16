@@ -1,10 +1,28 @@
 
     body{    
-        font-family: Arial, sans-serif;
-        text-align: center;
-        background-color: #ffcccc; 
-        color: white; 
-        }
+        font-family: Arial, sans-serif !important;
+        text-align: center !important;
+        background-color: #ffcccc !important; 
+        color: white !important;
+        margin-top: 0.5rem !important;
+        margin-left: 0.5rem !important; 
+        margin-right: 0.5rem !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .indexHtml{
+        height: auto !important;
+    }
+
+    html, body{
+        height: 100% !important;
+    }
+    
+    main{
+        flex:1 !important;
+        margin-bottom: 1rem !important;
+    }
 
     #wrapper{
         width: 98%;
@@ -15,10 +33,10 @@
     }
 
     header {
-        background-color: #8b0000; 
-        color: white;
-        padding: 15px;
-        border-radius: 5px;
+        background-color: #8b0000 !important; 
+        color: white !important;
+        padding: 15px !important;
+        border-radius: 5px !important;
     }
 
     form {
@@ -40,6 +58,13 @@
         width: 100%;
     }
 
+    .active{
+        color:white !important;
+    }
+
+    .form-label{
+        text-align: center;
+    }
 
 @media (min-width: 375px){
 
@@ -66,6 +91,7 @@
         color: white;
         border-radius: 5px;
     }
+
     footer a:link { color: white; }
     footer a:visited {color: gray; }
     footer a:hover { color: white;

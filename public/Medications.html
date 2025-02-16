@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/main.css"/>
+    <link rel="stylesheet" href="css/main.css" />    
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
+
     <title>Medications</title>
 </head>
+
 <body>
-    <header>
+    <header class="mb-4 pt-4 pb-4">
         <h1>Medications</h1>
     </header>
     <nav>
@@ -15,49 +19,60 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="Appointments.html">Appointments</a></li>
             <li><a href="Activities.html">Activities</a></li>
-            <li><a href="Medications.html">Medications</a></li>
-        </ul> 
+            <li><a href="Medications.html" class="active">Medications</a></li>
+        </ul>
     </nav>
     <main>
-        <form method="get">
-            <div class = "label-input">
-                <label for="startDate">Start Date:</label>
-                <input type="date" name="startDate" id="startDate">
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4 col-sm-12">
+                <div class="card">
+                    <div class="card-header" style="background-color: #8b0000; color: white;">
+                        Add Medication
+                    </div>
+                    <div class="card-body" style="background-color: #ff6666; color:white;">
 
-                <label for="endDate">Start Date:</label>
-                <input type="date" name="endDate" id="endDate">
-            </div>
-            <div class = "label-input">
-                <label for="prescriber">Prescriber:</label>
-                <input type="text" name="Prescriber" id="Prescriber">
-            </div>
-            <div class = "label-input">
-                <label for="medication">Medication:</label>
-                <input type="text" name="medication" id="medication">
-            </div>
-            <div class = "label-input">
-                <label for="quantity">Quantity:</label>
-                <input type="text" name="quantity" id="quantity">
-            </div>
-            <div class = "label-input">
-                <label for="quantityUnits">units:</label>
-                <input type="text" name="quantityUnits" id="quantityUnits">
-            </div>
-            <div class = "label-input">
-                <label for="frequency">Frequency:</label>
-                <input type="text" name="frequency" id="frequency">        
-            </div>
-            <div class = "label-input">
-                <label for="frequencyUnits">units:</label>
-                <input type="text" name="frequencyUnits" id="frequencyUnits">
-            </div>
-            <div class = "label-input">
-                <label for="Side Effects">Side Effects:</label>
-                <textarea name="userComments" id="userComments" rows="4" cols="20"></textarea>
-            </div>
-            <input id="userSubmit" type="submit" value="Submit">
-        </form><br>
+                        <form method="get">
+                            <div>
+                                <label for="startDate" class="form-label">Start Date:</label>
+                                <input type="date" class="form-control" name="startDate" id="startDate">
+
+                                <label for="endDate" class="form-label">End Date:</label>
+                                <input type="date" class="form-control" name="endDate" id="endDate">
+                            </div>
+                            <div>
+                                <label for="prescriber" class="form-label">Prescriber:</label>
+                                <input type="text" class="form-control" name="Prescriber" id="Prescriber" placeholder="Who Prescribed The Medication">
+                            </div>
+                            <div>
+                                <label for="medication" class="form-label">Medication:</label>
+                                <input type="text" class="form-control" name="medication" id="medication" placeholder="Medication Name">
+                            </div>
+                            <div>
+                                <label for="quantity" class="form-label">Quantity:</label>
+                                <input type="text" class="form-control" name="quantity" id="quantity" placeholder="Number of Pills">
+                            </div>
+                            <div>
+                                <label for="quantityUnits" class="form-label">Units:</label>
+                                <input type="text" class="form-control" name="quantityUnits" id="quantityUnits" placeholder="10 mg, 100 mcg, etc...">
+                            </div>
+                            <div>
+                                <label for="frequency" class="form-label">Frequency:</label>
+                                <input type="text" class="form-control" name="frequency" id="frequency" placeholder="How Often You Take the Medication">
+                            </div>
+                            <div>
+                                <label for="sideEffects" class="form-label">Side Effects:</label>
+                                <textarea name="sideEffects" class="form-control" id="sideEffects" placeholder="Dizziness, Headaches, etc..."></textarea>
+                            </div>
+                            <button id="userSubmit" class="btn" type="submit" style="background-color: #8b0000; color: white;">Submit</button>   
+                        </form>
+                    </div>
+                </div>
+            </div><br>
     </main>
+    
     <footer><a href="contactus.html">Contact Us</a></footer>
+
 </body>
+
 </html>
