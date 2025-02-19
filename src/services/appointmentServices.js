@@ -5,7 +5,8 @@ async function fetchAppointments(id){
     try{    
         const [appointments] = await db.query(
             `SELECT * FROM appointments
-            WHERE (user_id = ${id})`
+            WHERE (user_id = ?)`,
+            [id]
         );
         console.log("Appointments: ", appointments);
         return appointments;

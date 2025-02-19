@@ -5,7 +5,8 @@ async function fetchActivities(id){
     try{
         const [activities] = await db.query(
             `SELECT * FROM activities
-            WHERE (user_id = ${id})`
+            WHERE (user_id = ?)`,
+            [id]
         );
         console.log("Activities: ", activities);
         return activities;

@@ -5,7 +5,8 @@ async function fetchMedications(id){
     try{
         const [medications] = await db.query(
             `SELECT * FROM medications
-            WHERE (user_id = ${id})`
+            WHERE (user_id = ?)`,
+            [id]
         );
         console.log("Medications: ", medications);
         return medications;
