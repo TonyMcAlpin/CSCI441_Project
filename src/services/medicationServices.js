@@ -15,4 +15,8 @@ async function fetchMedications(id){
     }
 }
 
+
+
+//////TESTING//////
+
 await fetchMedications(1);

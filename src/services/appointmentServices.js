@@ -15,4 +15,10 @@ async function fetchAppointments(id){
     }
 }
 
+// POST: Add a New Appointment
+
+
+
+//////TESTING//////
+
 await fetchAppointments(1);

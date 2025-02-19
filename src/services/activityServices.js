@@ -15,6 +15,11 @@ async function fetchActivities(id){
     }
 }
 
+
+
+
+//////TESTING//////
+
 await fetchActivities(1);
 
 

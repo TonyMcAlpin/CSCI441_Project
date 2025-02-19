@@ -14,4 +14,9 @@ async function fetchRoles() {
     }
 }
 
+
+
+
+//////TESTING//////
+
 await fetchRoles();
