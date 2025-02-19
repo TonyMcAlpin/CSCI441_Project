@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../css/main.css" />
+    <script src="../js/main.js"></script>
+
+    <title>Medications</title>
+</head>
+
+<body>
+    <header class="mb-4 pt-4 pb-4">
+        <h1>Medications</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="Appointments.html">Appointments</a></li>
+            <li><a href="Activities.html">Activities</a></li>
+            <li><a href="Medications.html" class="active">Medications</a></li>
+        </ul>
+    </nav>
+    <main>
+        <div class="row">
+
+            <div class="col-md-4 col-sm-12 mx-auto">
+                <div class="card">
+                    <div class="card-header" style="background-color: #8b0000; color: white;">
+                        Add Medication
+                    </div>
+                    <div class="card-body" style="background-color: #ff6666; color:white;">
+
+                        <form method="get">
+                            <div class="mb-3">
+                                <label for="startDate" class="form-label">Start Date:</label>
+                                <input type="date" class="form-control" name="startDate" id="startDate">
+                            </div>
+                            <div class="mb-3">
+                                <label for="endDate" class="form-label">End Date:</label>
+                                <input type="date" class="form-control" name="endDate" id="endDate">
+                            </div>
+                            <div class="mb-3">
+                                <label for="prescriber" class="form-label">Prescriber:</label>
+                                <input type="text" class="form-control" name="Prescriber" id="Prescriber"
+                                    placeholder="Who Prescribed The Medication">
+                            </div>
+                            <div class="mb-3">
+                                <label for="medication" class="form-label">Medication:</label>
+                                <input type="text" class="form-control" name="medication" id="medication"
+                                    placeholder="Medication Name">
+                            </div>
+                            <div class="mb-3">
+                                <label for="quantity" class="form-label">Quantity:</label>
+                                <input type="text" class="form-control" name="quantity" id="quantity"
+                                    placeholder="Number of Pills">
+                            </div>
+                            <div class="mb-3">
+                                <label for="quantityUnits" class="form-label">Units:</label>
+                                <input type="text" class="form-control" name="quantityUnits" id="quantityUnits"
+                                    placeholder="10 mg, 100 mcg, etc...">
+                            </div>
+                            <div class="mb-3">
+                                <label for="frequency" class="form-label">Frequency:</label>
+                                <input type="text" class="form-control" name="frequency" id="frequency"
+                                    placeholder="How Often You Take the Medication">
+                            </div>
+                            <div class="mb-3">
+                                <label for="sideEffects" class="form-label">Side Effects:</label>
+                                <textarea name="sideEffects" class="form-control" id="sideEffects"
+                                    placeholder="Dizziness, Headaches, etc..."></textarea>
+                            </div>
+                            <button id="userSubmit" class="btn" type="submit"
+                                style="background-color: #8b0000; color: white;">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+    </main>
+
+    <footer><a href="contactus.html">Contact Us</a></footer>
+
+</body>
+
+</html>

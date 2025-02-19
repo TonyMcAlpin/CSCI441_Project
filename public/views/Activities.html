@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../css/main.css" />
+    <script src="../js/main.js"></script>
+    <title>Activities</title>
+</head>
+
+<body>
+    <header class="mb-4 pt-4 pb-4">
+        <h1>Activities</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="Appointments.html">Appointments</a></li>
+            <li><a href="Activities.html" class="active">Activities</a></li>
+            <li><a href="Medications.html">Medications</a></li>
+        </ul>
+    </nav>
+    <main>
+        <div class="row">
+
+            <div class="col-md-4 col-sm-12 mx-auto">
+                <div class="card">
+                    <div class="card-header" style="background-color: #8b0000; color: white;">
+                        Add Activity
+                    </div>
+                    <div class="card-body" style="background-color: #ff6666; color:white;">
+                        <form method="get">
+                            <div class="mb-3">
+                                <label for="activityDate" class="form-label">Date:</label>
+                                <input type="date" class="form-control" name="activityDate" id="activityDate">
+                            </div>
+                            <div class="mb-3">
+                                <label for="activityDuration" class="form-label">Duration:</label>
+                                <input type="text" class="form-control" name="activityDuration" id="activityDuration"
+                                    placeholder="How Long the Activity Lasted">
+                            </div>
+                            <div class="mb-3">
+                                <label for="activityDescription" class="form-label">Description:</label>
+                                <input type="text" class="form-control" name="activityDescription"
+                                    id="activityDescription" placeholder="Lifted at the Gym, Went on a Run, etc...">
+                            </div>
+                            <button id="userSubmit" class="btn" type="submit"
+                                style="background-color: #8b0000; color: white;">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+    <footer><a href="contactus.html">Contact Us</a></footer>
+</body>
+
+</html>
