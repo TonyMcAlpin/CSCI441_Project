@@ -1,6 +1,6 @@
 // Just using this file for testing queries and connections to the database.
 
-const db = require("../connections/db");
+import db from "../connections/db.js";
 
 
 async function fetchRoles() {
@@ -14,4 +14,4 @@ async function fetchRoles() {
     }
 }
 
-fetchRoles();
+await fetchRoles();

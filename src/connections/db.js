@@ -1,5 +1,5 @@
-const mysql = require('mysql2/promise');
-const config = require('./config');
+import mysql from "mysql2/promise.js";
+import config from "./config.js";
 
 
 //This is our database object that will be required for all services or
@@ -28,4 +28,4 @@ async function testConnection() {
 // It will be logged to the console by calling the testConnection() function.
 testConnection();
 
-module.exports = pool;
+export default pool;

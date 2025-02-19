@@ -1,4 +1,5 @@
-require("dotenv").config();
+import dotenv from "dotenv";
+dotenv.config();
 
 // Config for connection string from .env file.
 // The Raw values are there for ease of use.
@@ -11,4 +12,4 @@ const config = {
     }
 };
 
-module.exports = config;
+export default config;
