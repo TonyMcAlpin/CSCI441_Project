@@ -97,4 +97,4 @@ async function deleteUser(id){
 //await deleteUser(5);
 
 //console.log("FetchUsers(): \n");
-//await fetchUsers();
+await fetchUsers();
