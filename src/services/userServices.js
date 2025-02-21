@@ -82,6 +82,15 @@ async function deleteUser(id){
     }
 }
 
+export default {
+    fetchUsers,
+    fetchUser,
+    addUser,
+    updateUser,
+    deleteUser
+};
+
+
 //////TESTING//////
 
 //console.log("FetchUsers(): \n");
@@ -97,4 +106,4 @@ async function deleteUser(id){
 //await deleteUser(5);
 
 //console.log("FetchUsers(): \n");
-await fetchUsers();
+//await fetchUsers();
