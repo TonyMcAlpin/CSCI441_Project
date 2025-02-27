@@ -1,5 +1,5 @@
 import db from "../connections/db.js";
-import bcrypt from "bcrypt"
+import bcrypt from "bcryptjs"
 
 // GET: Fetch all Users
 async function fetchUsers(){
