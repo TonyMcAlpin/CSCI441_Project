@@ -82,12 +82,44 @@ async function deleteUser(id){
     }
 }
 
+
+async function validateUserLogin(username, password) {
+    try {
+        // Fetch user by username
+        const [user] = await db.query(
+            `SELECT * FROM users WHERE username = ?`, 
+            [username]
+        );
+
+        // If no user found, return null
+        if (!user || user.length === 0) {
+            return null;
+        }
+
+        // Compare the provided password with the hashed password
+        const passwordMatch = await bcrypt.compare(password, user[0].password);
+
+        if (passwordMatch) {
+            // Return the user data if login is successful
+            return user[0];  // You can choose what data to return (id, username, role, etc.)
+        } else {
+            // Return null if password does not match
+            return null;
+        }
+
+    } catch (err) {
+        console.error("Error during login validation: ", err);
+        throw err;
+    }
+}
+
 export default {
     fetchUsers,
     fetchUser,
     addUser,
     updateUser,
-    deleteUser
+    deleteUser,
+    validateUserLogin
 };
 
 
