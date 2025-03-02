@@ -1,5 +1,5 @@
 document.getElementById("loginForm").addEventListener("submit", async (e) => {
-    e.preventDefault(); // Prevent form submission
+    e.preventDefault(); 
 
     const username = document.getElementById("username").value;
     const password = document.getElementById("pwd").value;
@@ -10,7 +10,7 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
     };
 
     try {
-        // Use the correct URL for your local server
+        
         const response = await fetch("http://localhost:5000/api/users/login", {
             method: "POST",
             headers: {
@@ -20,13 +20,13 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
         });
 
         if (response.ok) {
-            // Handle successful login
+            // if successful 
             const data = await response.json();
             console.log("Login success:", data);
             // Redirect to index.html
-            window.location.href = "index.html"; // Replace with the correct path
+            window.location.href = "index.html"; 
         } else {
-            // Handle failed login
+            // if credential are invalid
             const errorData = await response.json();
             document.getElementById("loginError").textContent = errorData.message;
             document.getElementById("loginError").style.display = "block";
