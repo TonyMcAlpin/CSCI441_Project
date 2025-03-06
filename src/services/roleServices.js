@@ -3,7 +3,7 @@ import db from "../connections/db.js";
 // Fetch All Roles
 async function fetchRoles() {
     try{
-        const [roles] = await db.query("SELECT * FROM roles");
+        const [roles] = await db.query("SELECT * FROM roles"); 
         console.log("Roles: ", roles);
         return roles;
     }catch(err){
@@ -12,8 +12,6 @@ async function fetchRoles() {
     }
 }
 
-
-
 //////TESTING//////
 
-await fetchRoles();
+//await fetchRoles();

@@ -11,6 +11,9 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import userRoutes from "./src/routes/userRoutes.js"
+import medicationRoutes from "./src/routes/medicationRoutes.js"
+import appointmentRoutes from "./src/routes/appointmentRoutes.js"
+import activityRoutes from "./src/routes/activityRoutes.js"
 
 dotenv.config();
 
@@ -23,6 +26,9 @@ app.use(express.static("public"));
 
 // Use Routes
 app.use("/api/users", userRoutes);
+app.use("/api/medications", medicationRoutes);
+app.use("/api/appointments", appointmentRoutes);
+app.use("/api/activities", activityRoutes);
 
 // POST route for login
 app.post("/login", async (req, res) => {
