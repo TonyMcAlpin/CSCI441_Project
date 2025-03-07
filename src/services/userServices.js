@@ -82,7 +82,45 @@ async function deleteUser(id){
     }
 }
 
+// Get All Medications for a Specific User
 
+async function getMedications(user_id){
+
+    const [medications] = await db.query( 
+        `SELECT * FROM medications
+        WHERE (user_id = ?)`,
+        [user_id]
+    );
+    return medications;
+}
+
+// Get All Appointments for a Specific User
+
+async function getAppointments(user_id){
+   
+        const [appointments] = await db.query(
+            `SELECT * FROM appointments
+            WHERE (user_id = ?)`,
+            [user_id]
+        );
+        return appointments;
+}
+
+// Get All Activities for a Specific User
+
+async function getActivities(id){
+
+        const [activities] = await db.query(
+            `SELECT * FROM activities
+             WHERE (user_id = ?)`,
+             [id]
+        );
+
+        return activities;
+}
+
+
+// Login Validation
 async function validateUserLogin(username, password) {
     try {
         // Fetch user by username
@@ -119,6 +157,9 @@ export default {
     addUser,
     updateUser,
     deleteUser,
+    getMedications,
+    getAppointments,
+    getActivities,
     validateUserLogin
 };
 

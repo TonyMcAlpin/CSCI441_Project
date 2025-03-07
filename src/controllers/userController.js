@@ -51,7 +51,57 @@ const loginUser = async (req, res) => {
     }
 };
 
+
+// Get All Medications for Specific User
+
+const getMedications = async (req, res) => {
+    try{
+        const user_id = req.params.user_id;
+        const medications = await userServices.getMedications(user_id);
+
+        // Return list of medications. May be an empty list
+        return res.status(200).json(medications);
+    }
+    catch(err){
+        console.error("Error when Fetching Medications: ",err);
+        return res.status(500).json({message: "Internal Server Error"});
+    }
+};
+
+// Get All Appointments for a Specific User
+
+const getAppointments = async (req, res) => {
+    try{
+        const user_id = req.params.user_id;
+        const appointments = await userServices.getAppointments(user_id);
+
+        return res.status(200).json(appointments);
+    }
+    catch(err){
+        console.error("Error when Fetching Appoinments: ", err);
+        return res.status(500).json({message: "Internal Server Error"})
+    }
+};
+
+// Get All Activities for a Specific User
+
+const getActivities = async (req, res) => {
+    try{
+        const user_id = req.params.user_id;
+        const acitivties = await userServices.getActivities(user_id);
+
+        return res.status(200).json(acitivties);
+    }
+    catch(err){
+        console.error("Error when Fetching Activities: ", err);
+        return res.status(500).json({message: "Internal Server Error"})
+    }
+};
+
 export default {
     registerUser,
-    loginUser  
+    loginUser,
+    getMedications,
+    getAppointments,
+    getActivities  
 };

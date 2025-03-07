@@ -26,6 +26,7 @@ async function testConnection() {
 
 // If for whatever reason there is an issue for connecting to the database
 // It will be logged to the console by calling the testConnection() function.
-testConnection();
+
+//testConnection();
 
 export default pool;

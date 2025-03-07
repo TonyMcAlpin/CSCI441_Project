@@ -1,11 +1,4 @@
-/*const express = require('express');
-const cors = require('cors');
-require('dotenv').config();
-
 // Import userServices
-const userServices = require('./services/userServices');*/
-
-
 
 import express from "express";
 import cors from "cors";
@@ -31,7 +24,7 @@ app.use("/api/appointments", appointmentRoutes);
 app.use("/api/activities", activityRoutes);
 
 // POST route for login
-app.post("/login", async (req, res) => {
+/*app.post("/login", async (req, res) => {
     const { username, password } = req.body; // Access username and password from the request body
 
     // Validate input
@@ -54,7 +47,7 @@ app.post("/login", async (req, res) => {
         console.error("Error during login:", err);
         res.status(500).json({ message: "Error during login", error: err.message });
     }
-});
+});*/
 
 // Set the port from environment or default to 5000
 const PORT = process.env.PORT || 5000;
