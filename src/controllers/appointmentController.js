@@ -81,6 +81,7 @@ const deleteAppointment = async (req, res) => {
     try{
         const delAppointment = await appointmentServices.deleteAppointment(appointment_id);
 
+        // If no appointment with the matching id is found
         if(delAppointment.affectedRows === 0){
             return res.status(404).json({message: "Appointment Not Found."});
         }
