@@ -1,5 +1,5 @@
 
-    body{    
+    body {    
         font-family: Arial, sans-serif !important;
         text-align: center !important;
         background-color: #ffcccc !important; 
@@ -11,20 +11,27 @@
         flex-direction: column !important;
     }
 
-    .indexHtml{
+    .indexHtml {
         height: auto !important;
     }
 
-    html, body{
+    html, body {
         height: 100% !important;
-    }
-    
-    main{
-        flex:1 !important;
-        margin-bottom: 1rem !important;
+        margin: 0;
     }
 
-    #wrapper{
+    .navbar, .container, .row, .col {
+        margin: 0;
+        padding: 0;
+    }
+    
+    main {
+        flex: 1 !important;
+        margin-bottom: 1rem !important;
+        margin-top: 1rem !important;
+    }
+
+    #wrapper {
         width: 98%;
         margin: auto;
         background: #ff6666;
@@ -66,25 +73,42 @@
         text-align: center;
     }
 
-@media (min-width: 375px){
+    #logo {
+        text-decoration: none;
+        color: white;
+    }
 
+@media (min-width: 375px){
 
     nav ul { 
         list-style-type: none;
         padding-left: 0;
         font-size: 1.7em; 
+        display: flex; /* to make list align horizontally */
+        justify-content: center;
+        margin: 0;
+        background-color: #B22222;
+        border-radius: 5px;
+        flex-wrap: wrap;
     }
     nav li { 
-        background: #8b0000;
-        border-bottom: 3px solid #eb4d55; 
+        border-bottom: none;
     }
-    nav a:link { color: white; }
-    nav a:visited {color: gray; }
-    nav a:hover { color: white;
-                    background: #8b0000; }
+    nav a:link, nav a:visited { 
+        color: white; 
+        padding: 10px 15px;
+        text-decoration: none;
+        display: block;
+        transition: padding 0.3s ease, font-size 0.3s ease;
+    }
+    nav a:hover { 
+        /*color: white;
+        background: #8b0000;*/ 
+        background: #5f0000;
+    }
 
 
-    footer{
+    footer {
         margin-top: 10px;
         padding: 10px;
         background: #8b0000;
@@ -98,3 +122,45 @@
                     background: gray }
 }
 
+@media (max-width: 768px) {
+    nav a:link, nav a:visited {
+        font-size: 1em;
+        padding: 8px 12px;
+    }
+
+    nav li {
+        margin-right: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav li {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    nav a:link, nave a:visited {
+        font-size: 1.1em;
+        padding: 10px;
+    }
+}
+
+.loginBtn {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.loginBtn:hover {
+    background-color: #0056b3;
+}
