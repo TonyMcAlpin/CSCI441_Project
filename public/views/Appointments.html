@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="../css/main.css" />
-    <script src="../js/main.js"></script>
     <title>Appointments</title>
 </head>
 
@@ -31,34 +30,34 @@
                         Add Appointment
                     </div>
                     <div class="card-body" style="background-color: #ff6666; color:white;">
-                        <form method="get">
+                        <form id="addAppForm" method="get">
                             <div class="mb-3">
                                 <label for="appointmentDate" class="form-label">Date:</label>
-                                <input type="date" class="form-control" name="appointmentDate" id="appointmentDate">
+                                <input type="date" class="form-control" name="app_date" id="appointmentDate">
                             </div>
                             <div class="mb-3">
                                 <label for="medTitle" class="form-label">Medical Title: </label>
-                                <input type="text" class="form-control" name="medTitle" id="medTitle"
+                                <input type="text" class="form-control" name="medical_title" id="medTitle"
                                     placeholder="Dentist, Pediatrician, etc...">
                             </div>
                             <div class="mb-3">
                                 <label for="medicalProfessional" class="form-label">Provider Name:</label>
-                                <input type="text" class="form-control" name="medicalProfessional"
+                                <input type="text" class="form-control" name="provider_name"
                                     id="medicalProfessional" placeholder="Name of Physician">
                             </div>
                             <div class="mb-3">
                                 <label for="appointmentPurpose" class="form-label">Purpose: </label>
-                                <input type="text" class="form-control" name="appointmentPurpose"
+                                <input type="text" class="form-control" name="purpose"
                                     id="appointmentPurpose" placeholder="Checkup, Vaccination, etc...">
                             </div>
                             <div class="mb-3">
                                 <label for="phoneNumber" class="form-label">Phone number:</label>
-                                <input type="tel" class="form-control" name="phoneNumber" id="phoneNumber"
+                                <input type="tel" class="form-control" name="phone_number" id="phoneNumber"
                                     placeholder="Number for the Provider">
                             </div>
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email:</label>
-                                <input type="email" class="form-control" name="email" id="email"
+                                <input type="email" class="form-control" name="provider_email" id="email"
                                     placeholder="Email for the Provider, if Applicable">
                             </div>
                             <button id="userSubmit" class="btn" type="submit"
@@ -74,5 +73,7 @@
     </main>
 </body>
 <footer><a href="contactus.html">Contact Us</a></footer>
+<script src="../js/main.js"></script>
+<script src="../js/appointments/addAppointment.js"></script>
 
 </html>

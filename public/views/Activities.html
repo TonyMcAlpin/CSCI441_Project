@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="../css/main.css" />
-    <script src="../js/main.js"></script>
     <title>Activities</title>
 </head>
 
@@ -31,19 +30,19 @@
                         Add Activity
                     </div>
                     <div class="card-body" style="background-color: #ff6666; color:white;">
-                        <form method="get">
+                        <form id="addActForm" method="get">
                             <div class="mb-3">
                                 <label for="activityDate" class="form-label">Date:</label>
-                                <input type="date" class="form-control" name="activityDate" id="activityDate">
+                                <input type="date" class="form-control" name="act_date" id="activityDate">
                             </div>
                             <div class="mb-3">
                                 <label for="activityDuration" class="form-label">Duration:</label>
                                 <input type="text" class="form-control" name="activityDuration" id="activityDuration"
-                                    placeholder="How Long the Activity Lasted">
+                                    placeholder="Roughly How Long the Activity Lasted In Minutes">
                             </div>
                             <div class="mb-3">
                                 <label for="activityDescription" class="form-label">Description:</label>
-                                <input type="text" class="form-control" name="activityDescription"
+                                <input type="text" class="form-control" name="comments"
                                     id="activityDescription" placeholder="Lifted at the Gym, Went on a Run, etc...">
                             </div>
                             <button id="userSubmit" class="btn" type="submit"
@@ -57,5 +56,6 @@
     </main>
     <footer><a href="contactus.html">Contact Us</a></footer>
 </body>
-
+<script src="../js/main.js"></script>
+<script src="../js/activities/addActivity.js"></script>
 </html>

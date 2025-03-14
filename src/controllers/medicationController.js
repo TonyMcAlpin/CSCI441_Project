@@ -28,6 +28,10 @@ const addMedication = async (req, res) => {
     // Grab user id from url
     const user_id = req.params.user_id;
 
+    console.log("Received user_id from params:", req.params.user_id);
+    console.log("Received request body:", req.body);
+
+
     // Array With the name of the required fields
     const requiredFields = ["start_date", "med_name", "quantity", "units", "frequency", "comments"];
 

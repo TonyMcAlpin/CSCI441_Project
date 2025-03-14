@@ -23,6 +23,8 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
             // if successful 
             const data = await response.json();
             console.log("Login success:", data);
+            // Grabs user_id from local storage for use with api calls
+            localStorage.setItem("user_id", data.user.id);
             // Redirect to index.html
             window.location.href = "index.html"; 
         } else {

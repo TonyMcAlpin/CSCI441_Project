@@ -13,12 +13,12 @@ async function getMedication(id){
 }
 
 // POST: Add a New Medication
-async function addMedication(start_date, end_date, med_name, quantity, units, frequency, comments, user_id){
+async function addMedication(start_date, end_date, prescriber, med_name, quantity, units, frequency, comments, user_id){
 
         const [result] = await db.query(
-            `INSERT INTO medications(start_date, end_date, med_name, quantity, units, frequency, comments, user_id)
-             VALUES (?,?,?,?,?,?,?,?)`,
-            [start_date, end_date, med_name, quantity, units, frequency, comments, user_id]
+            `INSERT INTO medications(start_date, end_date, prescriber, med_name, quantity, units, frequency, comments, user_id)
+             VALUES (?,?,?,?,?,?,?,?,?)`,
+            [start_date, end_date, prescriber, med_name, quantity, units, frequency, comments, user_id]
         );
 
         return result; //Return result to be used by controller
@@ -26,13 +26,13 @@ async function addMedication(start_date, end_date, med_name, quantity, units, fr
 }
 
 // PATCH: Update exisiting Medication by id
-async function updateMedication(start_date, end_date, med_name, quantity, units, frequency, comments, id){
+async function updateMedication(start_date, end_date, prescriber, med_name, quantity, units, frequency, comments, id){
 
         const [result] = await db.query(
             `UPDATE medications
-             SET start_date = ?, end_date = ?, med_name = ?, quantity = ?, units = ?, frequency = ?, comments = ?
+             SET start_date = ?, end_date = ?, prescriber = ?, med_name = ?, quantity = ?, units = ?, frequency = ?, comments = ?
              WHERE (id = ?)`,
-             [start_date, end_date, med_name, quantity, units, frequency, comments, id]
+             [start_date, end_date, prescriber, med_name, quantity, units, frequency, comments, id]
         );
 
         return result; //Return result to be used by controller
