@@ -22,6 +22,7 @@ document.getElementById("addActForm").addEventListener("submit", async (e) => {
 
         if(response.ok){
             alert("Activity Added Successfully!");
+            location.reload();
         }
         else{
             const error = await response.json();
@@ -31,7 +32,7 @@ document.getElementById("addActForm").addEventListener("submit", async (e) => {
     }
     catch(err){
         console.error("Error When Submitting Form: ", err);
-        console.alert("Error When Submitting Form.");
+        alert("Error When Submitting Form.");
     }
 
 
