@@ -23,6 +23,7 @@ document.getElementById("addAppForm").addEventListener("submit", async (e) => {
 
         if(response.ok){
             alert("Appointment Added Successfully!");
+            location.reload();
         }
         else{
             const error = await response.json();

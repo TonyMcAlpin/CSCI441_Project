@@ -35,10 +35,4 @@ document.getElementById("addActForm").addEventListener("submit", async (e) => {
         alert("Error When Submitting Form.");
     }
 
-
-
-
-
-
-
 })
