@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", async () => {
 
     const tableBody = document.getElementById("tableBody");
@@ -19,27 +20,42 @@ document.addEventListener("DOMContentLoaded", async () => {
             // Clear the table of any existing data
             tableBody.innerHTML = "";
 
-            data.forEach(activtiy => {
+            data.forEach(activity => {
                 
                 // Create Table Row
                 const row = document.createElement("tr");
 
                 // Create Corresponding Data Cells
                 const dateCell = document.createElement("td");
-                const date = new Date(activtiy.act_date);
+                const date = new Date(activity.act_date);
                 dateCell.textContent = date.toLocaleDateString("en-US");
                 
                 const durationCell = document.createElement("td");
-                const duration = parseInt(activtiy.duration);
+                const duration = parseInt(activity.duration);
                 durationCell.textContent = (`${duration} minutes`);
 
                 const commentsCell = document.createElement("td");
-                commentsCell.textContent = activtiy.comments;
+                commentsCell.textContent = activity.comments;
 
+                // Create Delete Button
+                const deleteCell = document.createElement("td");
+                const deleteButton = document.createElement("button");
+                deleteButton.textContent = "Delete";
+                deleteButton.classList.add("btn", "btn-danger");
+                deleteButton.setAttribute("data-id", activity.id); 
+                deleteCell.appendChild(deleteButton);
+                deleteButton.addEventListener("click", () => {
+                    const activityId = deleteButton.getAttribute("data-id");
+                    deleteActivity(activityId); 
+                    row.remove(); 
+                });
+
+              
                 // Appending Cells to the Row
                 row.appendChild(dateCell);
                 row.appendChild(durationCell);
                 row.appendChild(commentsCell);
+                row.appendChild(deleteCell);
 
                 // Append row to Table Body
                 tableBody.appendChild(row);
