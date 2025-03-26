@@ -23,8 +23,26 @@
     </nav>
     <main>
         <div class="row">
-
             <div class="col-md-4 col-sm-12 mx-auto">
+                <table class="table table-striped table-hover">
+                    <thead >
+                        <tr>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Prescriber</th>
+                            <th>Medication</th>
+                            <th>Quantity</th>
+                            <th>Units</th>
+                            <th>Frequency</th>
+                            <th>Delete?</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                        <!--Dynamic Data Goes Here-->
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-4 col-sm-12 mx-auto">                
                 <div class="card">
                     <div class="card-header" style="background-color: #8b0000; color: white;">
                         Add Medication
@@ -83,4 +101,6 @@
 </body>
 <script src="../js/main.js"></script>
 <script src="../js/medications/addMedication.js"></script>
+<script src="../js/medications/getUserMed.js"></script>
+<script src="../js/medications/deleteMedication.js"></script>
 </html>

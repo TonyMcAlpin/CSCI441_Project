@@ -21,6 +21,7 @@ document.getElementById("addMedForm").addEventListener("submit", async (e) => {
 
         if(response.ok){
             alert("Medication Added Successfully!");
+            location.reload();
         }
         else{
             const error = await response.json();
