@@ -174,3 +174,27 @@ th{
     background-color: #ff6666 !important;
     color: white !important;
 } */
+
+/* Calendar CSS  */
+
+#calendar {
+    background-color: white;
+    padding: 20px;
+    min-width: calc(100% - 40px); /* Subtract the left and right padding */
+    box-sizing: border-box; /* Ensures padding is included in the element's width */
+}
+
+.fc-toolbar-title {
+    color: black !important;
+}
+
+.fc-list-event-time {
+    color: black !important;
+}
+
+.fc-list-event-title {
+    color: black !important;
+}
+ #eventModal {
+    color: black;
+ }
