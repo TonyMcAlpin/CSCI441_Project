@@ -45,15 +45,17 @@ const addActivity = async (req, res) => {
 const updateActivity = async (req, res) => {
 
     //Grab Activity ID from url
-    const id = req.params.id;
+    const act_id = req.params.id;
 
     //check that all fields are field out
     if(!Object.values(req.body).every(field => field)){
         return res.status(400).json({message: "Missing Required Fields."});
     }
 
-    try{    
-        const activity = await activityServices.updateActivity(...Object.values(req.body),id);
+    try{
+        const { act_date, duration, comments } = req.body;
+
+        const activity = await activityServices.updateActivity(act_date, duration, comments, act_id);
 
         if(activity.affectedRows === 0){
             return res.status(404).json({message: "Activity Not Found."});

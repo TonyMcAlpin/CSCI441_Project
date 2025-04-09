@@ -35,6 +35,7 @@ const addAppointment = async (req, res) => {
     }
 
     try{
+
         await appointmentServices.addAppointment(...Object.values(req.body),user_id);
         return res.status(201).json({message: "Appointment Created Successfully!"});
     }
@@ -58,6 +59,7 @@ const updateAppointment = async (req, res) => {
     }
 
     try{
+        
         const updatedApp = await appointmentServices.updateAppointment(...Object.values(req.body), appointment_id);
 
         // Check if any appointments were updated

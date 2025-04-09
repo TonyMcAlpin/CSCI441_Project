@@ -51,14 +51,14 @@ const addMedication = async (req, res) => {
     }
 };
 
-// PATCH: Update A Medication Entry
+// PUT: Update A Medication Entry
 const updateMedication = async (req, res) => {
 
     // Grab medication id from url
     const medication_id = req.params.id;
 
     // Array With the name of the required fields
-    const requiredFields = ["start_date", "med_name", "quantity", "units", "frequency", "comments"];
+    const requiredFields = ["start_date", "med_name", "prescriber", "quantity", "units", "frequency", "comments"];
 
     // Check that the properties in in req.body, with the corresponding names in requiredFields, have values
     if(!requiredFields.every(field => req.body[field])){
@@ -66,8 +66,13 @@ const updateMedication = async (req, res) => {
     }
 
     try{
+        let {start_date, end_date, med_name, prescriber, quantity, units, frequency, comments} = req.body;
 
-        const medication = await medicationServices.updateMedication(...Object.values(req.body), medication_id);
+        end_date = end_date === "" ? null : end_date;
+
+        const medication = await medicationServices.updateMedication(start_date, end_date, med_name, prescriber, quantity, units, frequency, comments, medication_id);
+
+        //const medication = await medicationServices.updateMedication(...Object.values(req.body), medication_id);
 
         // If the medication id is not found
         if(medication.affectedRows == 0){

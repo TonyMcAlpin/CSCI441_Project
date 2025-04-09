@@ -48,6 +48,35 @@ document.addEventListener("DOMContentLoaded", async () => {
                 const emailCell = document.createElement("td");
                 emailCell.textContent = appointment.provider_email;
 
+
+                // Create Delete Button
+                const deleteCell = document.createElement("td");
+                const deleteButton = document.createElement("button");
+                deleteButton.textContent = "Delete";
+                deleteButton.classList.add("btn", "btn-danger");
+                deleteCell.appendChild(deleteButton);
+                deleteButton.addEventListener("click", () => {
+                    deleteAppointment(appointment.id);
+                });
+
+                // Create Edit Button
+                const editButton = document.createElement("button");
+                editButton.textContent = "Edit";
+                editButton.classList.add("btn", "btn-success", "ms-1");
+                deleteCell.appendChild(editButton);
+                editButton.addEventListener("click", () => {
+                    document.getElementById("editId").value = appointment.id;
+                    document.getElementById("editDate").value = appointment.app_date.split('T')[0];
+                    document.getElementById("editTitle").value = appointment.medical_title;
+                    document.getElementById("editProvider").value = appointment.provider_name;
+                    document.getElementById("editPurpose").value = appointment.purpose;
+                    document.getElementById("editPhone").value = appointment.phone_number;
+                    document.getElementById("editEmail").value = appointment.provider_email;
+                    
+                    const modal = new bootstrap.Modal(document.getElementById("editModal"));
+                    modal.show();
+                });
+
                 // Append data cells onto row
                 row.appendChild(dateCell);
                 row.appendChild(titleCell);
@@ -55,6 +84,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 row.appendChild(purposeCell);
                 row.appendChild(phoneCell);
                 row.appendChild(emailCell);
+                row.appendChild(deleteCell);
                 
                 //Append row onto table body
                 tableBody.appendChild(row);

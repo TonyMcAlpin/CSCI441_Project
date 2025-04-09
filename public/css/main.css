@@ -174,3 +174,31 @@ th{
     background-color: #ff6666 !important;
     color: white !important;
 } */
+
+.modal-content {
+    background-color: #ff6666;
+    color: white;
+    border: none;
+    box-shadow: none;
+}
+
+.modal-dialog {
+    margin: auto; /* center it properly */
+}
+
+.modal-header,
+.modal-body,
+.modal-footer {
+    background-color: #ff6666;
+    color: white;
+    border: none;
+}
+
+.modal-header {
+    background-color: #8b0000;
+}
+
+.modal-content {
+    border-radius: 0.375rem; /* matches Bootstrap's .card */
+}
+

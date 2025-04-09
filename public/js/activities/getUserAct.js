@@ -42,15 +42,28 @@ document.addEventListener("DOMContentLoaded", async () => {
                 const deleteButton = document.createElement("button");
                 deleteButton.textContent = "Delete";
                 deleteButton.classList.add("btn", "btn-danger");
-                deleteButton.setAttribute("data-id", activity.id); 
                 deleteCell.appendChild(deleteButton);
                 deleteButton.addEventListener("click", () => {
-                    const activityId = deleteButton.getAttribute("data-id");
-                    deleteActivity(activityId); 
-                    row.remove(); 
+                    deleteActivity(activity.id); 
+                    
                 });
 
-              
+                // Create Edit Button
+                const editButton = document.createElement("button");
+                editButton.textContent = "Edit";
+                editButton.classList.add("btn", "btn-success", "ms-1");
+                deleteCell.appendChild(editButton);
+                editButton.addEventListener("click", () => {
+                    document.getElementById("editId").value = activity.id;
+                    document.getElementById("editDate").value = activity.act_date.split('T')[0];
+                    document.getElementById("editDuration").value = activity.duration;
+                    document.getElementById("editDescription").value = activity.comments;
+
+                    const modal = new bootstrap.Modal(document.getElementById("editModal"));
+                    modal.show();
+                });
+
+
                 // Appending Cells to the Row
                 row.appendChild(dateCell);
                 row.appendChild(durationCell);

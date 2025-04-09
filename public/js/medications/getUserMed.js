@@ -31,8 +31,13 @@ document.addEventListener("DOMContentLoaded", async () => {
                 startDateCell.textContent = startDate.toLocaleDateString("en-US");
 
                 const endDateCell = document.createElement("td");
-                const endDate = new Date(medication.end_date);
-                endDateCell.textContent = endDate.toLocaleDateString("en-US");
+                if(medication.end_date){
+                    const endDate = new Date(medication.end_date);
+                    endDateCell.textContent = endDate.toLocaleDateString("en-US");
+                }
+                else{
+                    endDateCell.textContent = "";
+                }
 
                 const prescriberCell = document.createElement("td");
                 prescriberCell.textContent = medication.prescriber;
@@ -49,17 +54,37 @@ document.addEventListener("DOMContentLoaded", async () => {
                 const frequencyCell = document.createElement("td");
                 frequencyCell.textContent = medication.frequency;
 
+                const commentsCell = document.createElement("td");
+                commentsCell.textContent = medication.comments;
+
                 // Create Delete Button
                 const deleteCell = document.createElement("td");
                 const deleteButton = document.createElement("button");
                 deleteButton.textContent = "Delete";
                 deleteButton.classList.add("btn", "btn-danger");
-                deleteButton.setAttribute("data-id", medication.id); 
                 deleteCell.appendChild(deleteButton);
                 deleteButton.addEventListener("click", () => {
-                    const medicationId = deleteButton.getAttribute("data-id");
-                    deleteMedication(medicationId); 
-                    row.remove(); 
+                    deleteMedication(medication.id); 
+                });
+
+                // Create Edit Button
+                const editButton = document.createElement("button");
+                editButton.textContent = "Edit";
+                editButton.classList.add("btn", "btn-success", "ms-1");
+                deleteCell.appendChild(editButton);
+                editButton.addEventListener("click", () => {
+                    document.getElementById("editId").value = medication.id;
+                    document.getElementById("editStart_Date").value = medication.start_date.split('T')[0];
+                    document.getElementById("editEnd_Date").value = medication.end_date ? medication.end_date.split('T')[0] : "";
+                    document.getElementById("editPresc").value = medication.prescriber;
+                    document.getElementById("editMed").value = medication.med_name;
+                    document.getElementById("editQuantity").value = medication.quantity;
+                    document.getElementById("editUnits").value = medication.units;
+                    document.getElementById("editFrequency").value = medication.frequency;
+                    document.getElementById("editComments").value = medication.comments;
+
+                    const modal = new bootstrap.Modal(document.getElementById("editModal"));
+                    modal.show();
                 });
 
               
@@ -71,6 +96,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 row.appendChild(quantityCell);
                 row.appendChild(unitsCell);
                 row.appendChild(frequencyCell);
+                row.appendChild(commentsCell);
                 row.appendChild(deleteCell);
 
                 // Append row to Table Body

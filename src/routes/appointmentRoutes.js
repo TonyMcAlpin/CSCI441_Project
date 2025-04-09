@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.get("/:id", appointmentController.getAppointment);
 router.post("/:user_id", appointmentController.addAppointment);
-router.patch("/:id", appointmentController.updateAppointment);
+router.put("/:id", appointmentController.updateAppointment);
 router.delete("/:id", appointmentController.deleteAppointment);
 
 

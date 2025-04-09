@@ -1,4 +1,4 @@
-document.getElementById("addActForm").addEventListener("submit", async (e) => {
+document.getElementById("editForm").addEventListener("submit", async (e) => {
     e.preventDefault();
 
     // Grab All Form Data
@@ -8,26 +8,23 @@ document.getElementById("addActForm").addEventListener("submit", async (e) => {
     const formObject = Object.fromEntries(formData.entries());
 
     // Grab the user_id from localstorage
-    const user_id = localStorage.getItem("user_id");
+    const id = document.getElementById("editId").value;
 
 
-    try{
-        const response = await fetch(`http://localhost:5000/api/activities/${user_id}`, {
-            method: 'POST',
+    try {
+        const response = await fetch(`http://localhost:5000/api/activities/${id}`, {
+            method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(formObject)
         });
 
-        if(response.ok){
-            alert("Activity Added Successfully!");
+        if (response.ok) {
+            alert("Activity Updated Successfully!");
             location.reload();
         }
-        else{
-            // const error = await response.json();
-            // console.error("Error: ", error);
-            // alert("Error When Adding Activity.");
+        else {
             let errorText;
             try {
                 const error = await response.json();
@@ -39,7 +36,7 @@ document.getElementById("addActForm").addEventListener("submit", async (e) => {
             alert("Error When Updating Activity: " + errorText);
         }
     }
-    catch(err){
+    catch (err) {
         console.error("Error When Submitting Form: ", err);
         alert("Error When Submitting Form.");
     }
