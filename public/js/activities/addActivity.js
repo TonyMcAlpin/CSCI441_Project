@@ -25,9 +25,6 @@ document.getElementById("addActForm").addEventListener("submit", async (e) => {
             location.reload();
         }
         else{
-            // const error = await response.json();
-            // console.error("Error: ", error);
-            // alert("Error When Adding Activity.");
             let errorText;
             try {
                 const error = await response.json();
