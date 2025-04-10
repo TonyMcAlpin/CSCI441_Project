@@ -17,3 +17,5 @@ function deleteMedication(medicationId) {
         alert("Failed to delete medication.");
     });
 }
+
+export {deleteMedication};

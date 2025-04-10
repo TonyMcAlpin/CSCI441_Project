@@ -1,4 +1,4 @@
-document.getElementById("editForm").addEventListener("submit", async (e) => {
+document.getElementById("appEditForm").addEventListener("submit", async (e) => {
     e.preventDefault();
 
     // Grab All Form Data
@@ -20,18 +20,23 @@ document.getElementById("editForm").addEventListener("submit", async (e) => {
             body: JSON.stringify(formObject)
         });
 
+        const contentType = response.headers.get("Content-Type");
+
         if (response.ok) {
             alert("Appointment Updated Successfully!");
             location.reload();
         }
         else {
             let errorText;
-            try {
-                const error = await response.json();
+
+            // Check content type to decide how to parse safely
+            if (contentType && contentType.includes("application/json")) {
+                const error = await response.json(); // only once
                 errorText = error.message || JSON.stringify(error);
-            } catch {
-                errorText = await response.text();
+            } else {
+                errorText = await response.text(); // fallback
             }
+
             console.error("Error response:", errorText);
             alert("Error When Updating Appointment: " + errorText);
         }

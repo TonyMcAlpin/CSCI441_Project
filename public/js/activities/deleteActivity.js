@@ -16,3 +16,5 @@ function deleteActivity(activityId) {
         alert("Failed to delete activity.");
     });
 }
+
+export { deleteActivity };

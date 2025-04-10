@@ -1,7 +1,7 @@
-function deleteAppointment(apointmentId) {
+function deleteAppointment(appointmentId) {
     if (!confirm("Are you sure you want to delete this appointment?")) return;
 
-    fetch(`http://localhost:5000/api/appointments/${apointmentId}`, {
+    fetch(`http://localhost:5000/api/appointments/${appointmentId}`, {
         method: "DELETE",
     })
     .then(res => res.json())
@@ -17,3 +17,6 @@ function deleteAppointment(apointmentId) {
         alert("Failed to delete appointment.");
     });
 }
+
+// export function for testing
+export { deleteAppointment };

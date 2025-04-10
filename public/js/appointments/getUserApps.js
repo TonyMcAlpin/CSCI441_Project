@@ -27,8 +27,55 @@ document.addEventListener("DOMContentLoaded", async () => {
             document.getElementById('eventPurpose').textContent = info.event.extendedProps.purpose;
             document.getElementById('eventPhone').textContent = info.event.extendedProps.phone;
             document.getElementById('eventEmail').textContent = info.event.extendedProps.email;
+
+            // Wire up the Edit button
+            document.getElementById("editAppBtn").onclick = () => {
+                // Pre-fill the edit form with values
+                document.getElementById("editDate").value = info.event.start.toISOString().split('T')[0];
+                document.getElementById("editTitle").value = info.event.title;
+                document.getElementById("editProvider").value = info.event.extendedProps.provider;
+                document.getElementById("editPurpose").value = info.event.extendedProps.purpose;
+                document.getElementById("editPhone").value = info.event.extendedProps.phone;
+                document.getElementById("editEmail").value = info.event.extendedProps.email;
+                document.getElementById("editId").value = info.event.extendedProps.id;
+
+                // Hide the view modal
+                const viewModal = bootstrap.Modal.getInstance(document.getElementById('eventModal'));
+                viewModal.hide();
+
+                // Show the edit modal
+                const editModal = new bootstrap.Modal(document.getElementById('appEditModal'));
+                editModal.show();
+            };
+
+            // Wire up the Delete button
+            document.getElementById("deleteAppBtn").onclick = async () => {
+                const confirmDelete = confirm("Are you sure you want to delete this appointment?");
+                if (!confirmDelete) return;
+
+                try {
+                    const appointmentId = info.event.extendedProps.id;
+                    const response = await fetch(`http://localhost:5000/api/appointments/${appointmentId}`, {
+                        method: 'DELETE'
+                    });
+
+                    if (response.ok) {
+                        alert("Appointment deleted.");
+                        info.event.remove(); //Remove from calendar
+                        const viewModal = bootstrap.Modal.getInstance(document.getElementById('eventModal'));
+                        viewModal.hide();
+                    } else {
+                        const errorText = await response.text();
+                        console.error("Failed to delete:", errorText);
+                        alert("Error deleting appointment: " + errorText);
+                    }
+                } catch (err) {
+                    console.error("Error deleting:", err);
+                    alert("Error deleting appointment.");
+                }
+            };
     
-            // Show the modal
+            // Show the view modal
             var modal = new bootstrap.Modal(document.getElementById('eventModal'));
             modal.show();
         }
@@ -53,80 +100,13 @@ document.addEventListener("DOMContentLoaded", async () => {
                 title: appointment.medical_title,
                 start: appointment.app_date, 
                 extendedProps: {
+                    id: appointment.id,
                     provider: appointment.provider_name,
                     purpose: appointment.purpose,
                     phone: appointment.phone_number,
                     email: appointment.provider_email
                 }
             }));
-
-            // data.forEach(appointment => {
-
-            //     //Generate Table Row
-            //     const row = document.createElement("tr");
-
-            //     // Create the data cells
-            //     const dateCell = document.createElement("td");
-            //     const date = new Date(appointment.app_date);
-            //     dateCell.textContent = date.toLocaleDateString("en-US");
-
-            //     const titleCell = document.createElement("td");
-            //     titleCell.textContent = appointment.medical_title;
-
-            //     const nameCell = document.createElement("td");
-            //     nameCell.textContent = appointment.provider_name;
-
-            //     const purposeCell = document.createElement("td");
-            //     purposeCell.textContent = appointment.purpose;
-
-            //     const phoneCell = document.createElement("td");
-            //     phoneCell.textContent = appointment.phone_number;
-
-            //     const emailCell = document.createElement("td");
-            //     emailCell.textContent = appointment.provider_email;
-
-
-            //     // Create Delete Button
-            //     const deleteCell = document.createElement("td");
-            //     const deleteButton = document.createElement("button");
-            //     deleteButton.textContent = "Delete";
-            //     deleteButton.classList.add("btn", "btn-danger");
-            //     deleteCell.appendChild(deleteButton);
-            //     deleteButton.addEventListener("click", () => {
-            //         deleteAppointment(appointment.id);
-            //     });
-
-            //     // Create Edit Button
-            //     const editButton = document.createElement("button");
-            //     editButton.textContent = "Edit";
-            //     editButton.classList.add("btn", "btn-success", "ms-1");
-            //     deleteCell.appendChild(editButton);
-            //     editButton.addEventListener("click", () => {
-            //         document.getElementById("editId").value = appointment.id;
-            //         document.getElementById("editDate").value = appointment.app_date.split('T')[0];
-            //         document.getElementById("editTitle").value = appointment.medical_title;
-            //         document.getElementById("editProvider").value = appointment.provider_name;
-            //         document.getElementById("editPurpose").value = appointment.purpose;
-            //         document.getElementById("editPhone").value = appointment.phone_number;
-            //         document.getElementById("editEmail").value = appointment.provider_email;
-                    
-            //         const modal = new bootstrap.Modal(document.getElementById("editModal"));
-            //         modal.show();
-            //     });
-
-            //     // Append data cells onto row
-            //     row.appendChild(dateCell);
-            //     row.appendChild(titleCell);
-            //     row.appendChild(nameCell);
-            //     row.appendChild(purposeCell);
-            //     row.appendChild(phoneCell);
-            //     row.appendChild(emailCell);
-            //     row.appendChild(deleteCell);
-                
-            //     //Append row onto table body
-            //     tableBody.appendChild(row);
-
-            // });
 
             events.forEach(event => calendar.addEvent(event));
 

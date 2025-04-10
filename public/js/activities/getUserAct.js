@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", async () => {
 
     const tableBody = document.getElementById("tableBody");

@@ -36,12 +36,5 @@ document.getElementById("addAppForm").addEventListener("submit", async (e) => {
         console.alert("Error When Submitting Form.");
     }
 
-
-
-
-
-
-
-
 })
 
