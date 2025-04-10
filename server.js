@@ -21,33 +21,7 @@ app.use(express.static("public"));
 app.use("/api/users", userRoutes);
 app.use("/api/medications", medicationRoutes);
 app.use("/api/appointments", appointmentRoutes);
-app.use("/api/activities", activityRoutes);
-
-// POST route for login
-/*app.post("/login", async (req, res) => {
-    const { username, password } = req.body; // Access username and password from the request body
-
-    // Validate input
-    if (!username || !password) {
-        return res.status(400).json({ message: "Username and password are required" });
-    }
-
-    try {
-        // Call your authentication service or logic to validate user credentials
-        const user = await userServices.validateUserLogin(username, password);
-
-        if (user) {
-            // Successful login, send user data
-            res.status(200).json({ message: "Login successful", user: user });
-        } else {
-            // Invalid login credentials
-            res.status(401).json({ message: "Invalid username or password" });
-        }
-    } catch (err) {
-        console.error("Error during login:", err);
-        res.status(500).json({ message: "Error during login", error: err.message });
-    }
-});*/
+app.use("/api/activities", activityRoutes); 
 
 // Set the port from environment or default to 5000
 const PORT = process.env.PORT || 5000;
