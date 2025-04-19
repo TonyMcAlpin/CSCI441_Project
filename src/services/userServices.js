@@ -67,7 +67,7 @@ async function updateUser(id, userName, firstName, lastName, email, password, ro
 }
 
 
-// DELTE: Delete a Specific User and All Related Data
+// DELETE: Delete a Specific User and All Related Data
 async function deleteUser(id){
     try{
         await db.query(
@@ -151,6 +151,22 @@ async function validateUserLogin(username, password) {
     }
 }
 
+// Get all users with role "1"
+async function getPatients() {
+    try{
+        const [patients] = await db.query(
+            `SELECT * FROM users
+            WHERE role_id = 1`
+        );
+
+        return patients;
+    }catch (err){
+        console.error("Error fetching patients: ", err);
+        console.error("Full error stack:", err.stack);
+        throw err;
+    }
+}
+
 export default {
     fetchUsers,
     fetchUser,
@@ -160,7 +176,8 @@ export default {
     getMedications,
     getAppointments,
     getActivities,
-    validateUserLogin
+    validateUserLogin,
+    getPatients
 };
 
 

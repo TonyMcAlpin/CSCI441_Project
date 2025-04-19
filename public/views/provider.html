@@ -20,11 +20,27 @@
                     <div>
                         <input type="text" class="form-control" name = "patientSearch" id = "patientSearch" placeholder="Search patients">
                     </div>
-                    <p>No patients yet.</p>        
+
+                    <div class="col-md-4 col-sm-12 mx-auto">
+                        <table class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Patient Name</th>
+                                </tr>
+                            </thead>
+                            <tbody id="patientTableBody">
+                                <!--Dynamic Data Goes Here-->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <p id = "noPatientMsg">No patients yet.</p>        
                 </div>
             </div>
         </main>
         <footer><a href="contactus.html">Contact Us</a></footer>
     </div>
+
+    <script src="../js/providerSearch.js"></script>
 </body>
 </html>

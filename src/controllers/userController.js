@@ -98,10 +98,28 @@ const getActivities = async (req, res) => {
     }
 };
 
+// Get ALL users with role "1"
+const getPatients = async (req, res) => {
+    try {
+        const patients = await userServices.getPatients();
+
+        return res.status(200).json(patients);
+    }catch(err){
+        console.error("Error when Fetching Patients: ", err);
+        console.error("Full error stack:", err.stack);
+        return res.status(500).json({
+            message: "Internal Server Error",
+            error: err.toString()
+            });
+        
+    }
+}
+
 export default {
     registerUser,
     loginUser,
     getMedications,
     getAppointments,
-    getActivities  
+    getActivities,
+    getPatients 
 };
