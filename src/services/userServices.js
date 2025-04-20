@@ -134,6 +134,7 @@ async function validateUserLogin(username, password) {
             return null;
         }
 
+
         // Compare the provided password with the hashed password
         const passwordMatch = await bcrypt.compare(password, user[0].password);
 
@@ -167,6 +168,43 @@ async function getPatients() {
     }
 }
 
+
+//Get user by username
+async function fetchUserByUsername(username) {
+    try {
+        const [user] = await db.query(
+            `SELECT * FROM users WHERE username = ?`, 
+            [username]
+        );
+
+        // Return the user if found, otherwise return null
+        return user.length > 0 ? user[0] : null;
+    } catch (err) {
+        console.error("Error fetching user by username: ", err);
+        throw err;
+    }
+}
+
+//Update user password
+async function updateUserPassword(username, newPassword) {
+    try {
+        // Hash the new password before updating it
+        const hashedPass = await bcrypt.hash(newPassword, 10);
+
+        // Update the user password
+        await db.query(
+            `UPDATE users SET password = ? WHERE username = ?`,
+            [hashedPass, username]
+        );
+        console.log("Password updated successfully!");
+    } catch (err) {
+        console.error("Error updating password: ", err);
+        throw err;
+    }
+}
+
+
+
 export default {
     fetchUsers,
     fetchUser,
@@ -177,7 +215,9 @@ export default {
     getAppointments,
     getActivities,
     validateUserLogin,
-    getPatients
+    getPatients,
+    fetchUserByUsername,
+    updateUserPassword
 };
 
 
