@@ -1,3 +1,4 @@
+import bcrypt from "bcryptjs";
 import userServices from "../services/userServices.js";
 
 // POST route, used with signUp.html & .js for registering users
@@ -24,6 +25,7 @@ const registerUser = async (req, res) => {
 // POST route, used for logging in users
 const loginUser = async (req, res) => {
     const { username, password } = req.body;
+    console.log("Login attempt:", { username, password });
 
     // Validate input
     if (!username || !password) {
@@ -50,6 +52,33 @@ const loginUser = async (req, res) => {
         res.status(500).json({ message: "Internal Server Error" });
     }
 };
+
+//Reset user password
+
+const resetPassword = async (req, res) => {
+    const { username, newPassword } = req.body;
+
+    // Validate input
+    if (!username || !newPassword) {
+        return res.status(400).json({ message: "Username and new password are required." });
+    }
+
+    try {
+        // Check if user exists
+        const user = await userServices.fetchUserByUsername(username);
+        if (!user) {
+            return res.status(404).json({ message: "User not found." });
+        }
+
+        await userServices.updateUserPassword(username, newPassword);
+
+        res.status(200).json({ message: "Password reset successful." });
+    } catch (error) {
+        console.error("Error during password reset:", error);
+        res.status(500).json({ message: "Server error." });
+    }
+};
+
 
 
 // Get All Medications for Specific User
@@ -121,5 +150,6 @@ export default {
     getMedications,
     getAppointments,
     getActivities,
-    getPatients 
+    getPatients,
+    resetPassword 
 };
