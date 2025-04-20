@@ -10,7 +10,7 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
     };
 
     try {
-        // Use the correct URL for your local server
+      
         const response = await fetch("http://localhost:5000/api/users/login", {
             method: "POST",
             headers: {
