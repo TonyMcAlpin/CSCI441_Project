@@ -25,8 +25,15 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
             console.log("Login success:", data);
             // Grabs user_id from local storage for use with api calls
             localStorage.setItem("user_id", data.user.id);
-            // Redirect to index.html
-            window.location.href = "index.html"; 
+            localStorage.setItem("role", data.user.role)
+            if(data.user.role == 1){
+                // Redirect to Patient Dashboard
+                window.location.href = "index.html"; 
+            }
+            else{
+                // Redirect to Provider Dashboard
+                window.location.href = "provider.html";
+            }
         } else {
             // if credential are invalid
             const errorData = await response.json();
