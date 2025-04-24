@@ -11,8 +11,10 @@ router.post("/reset-password", userController.resetPassword);
 router.get("/medications/:user_id", userController.getMedications);
 router.get("/appointments/:user_id", userController.getAppointments);
 router.get("/activities/:user_id", userController.getActivities);
+router.get("/requests/:user_id", userController.getRequests);
 
 router.get("/patients", userController.getPatients);
+router.get("/:id", userController.getUser);
 
 export default router;
 

@@ -18,4 +18,4 @@ function deleteMedication(medicationId) {
     });
 }
 
-export {deleteMedication};
+window.deleteMedication = deleteMedication;

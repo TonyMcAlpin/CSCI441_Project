@@ -7,6 +7,8 @@ import userRoutes from "./src/routes/userRoutes.js";
 import medicationRoutes from "./src/routes/medicationRoutes.js";
 import appointmentRoutes from "./src/routes/appointmentRoutes.js";
 import activityRoutes from "./src/routes/activityRoutes.js";
+import requestRoutes from "./src/routes/requestRoutes.js";
+
 
 dotenv.config();
 
@@ -22,6 +24,8 @@ app.use("/api/users", userRoutes);
 app.use("/api/medications", medicationRoutes);
 app.use("/api/appointments", appointmentRoutes);
 app.use("/api/activities", activityRoutes); 
+app.use("/api/requests", requestRoutes); 
+
 
 // Set the port from environment or default to 5000
 const PORT = process.env.PORT || 5000;

@@ -44,7 +44,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                 deleteCell.appendChild(deleteButton);
                 deleteButton.addEventListener("click", () => {
                     deleteActivity(activity.id); 
-                    
                 });
 
                 // Create Edit Button

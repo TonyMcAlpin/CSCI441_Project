@@ -32,7 +32,7 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
             }
             else{
                 // Redirect to Provider Dashboard
-                window.location.href = "provider.html";
+                window.location.href = "providerDashboard.html";
             }
         } else {
             // if credential are invalid

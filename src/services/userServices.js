@@ -5,7 +5,7 @@ import bcrypt from "bcryptjs"
 async function fetchUsers(){
     try{
         const [users] = await db.query("SELECT * FROM users");
-        console.log("Users: ", users);
+
         return users;
     }catch(err){
         console.error("Error fetching accounts: ", err);
@@ -15,18 +15,14 @@ async function fetchUsers(){
 
 // GET{id}: Fetch a Specific User
 async function fetchUser(id){
-    try{
+
         const [user] = await db.query(
             `SELECT * FROM users
             WHERE (id = ?)`,
             [id]
         );
-        console.log("User: ", user);
         return user;
-    }catch(err){
-        console.error("Error fetching accounts: ", err);
-        throw err;
-    }
+
 }
 
 // POST: Add a New User
@@ -157,7 +153,7 @@ async function getPatients() {
     try{
         const [patients] = await db.query(
             `SELECT * FROM users
-            WHERE role_id = 1`
+            WHERE role_id = 1 ORDER BY last_name`
         );
 
         return patients;
@@ -203,6 +199,18 @@ async function updateUserPassword(username, newPassword) {
     }
 }
 
+async function getRequests(user_id){
+    
+    const [requests] = await db.query(
+        `SELECT * 
+         FROM requests
+         WHERE (patient_id = ? OR provider_id = ?)`,
+         [user_id,user_id]
+    );
+    return requests;
+    
+}
+
 
 
 export default {
@@ -214,6 +222,7 @@ export default {
     getMedications,
     getAppointments,
     getActivities,
+    getRequests,
     validateUserLogin,
     getPatients,
     fetchUserByUsername,

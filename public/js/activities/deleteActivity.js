@@ -17,4 +17,5 @@ function deleteActivity(activityId) {
     });
 }
 
-export { deleteActivity };
+window.deleteActivity = deleteActivity;
+

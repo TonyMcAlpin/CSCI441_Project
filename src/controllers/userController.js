@@ -122,7 +122,7 @@ const getActivities = async (req, res) => {
         return res.status(200).json(acitivties);
     }
     catch(err){
-        console.error("Error when Fetching Activities: ", err);
+        console.error("Error When Fetching Activities: ", err);
         return res.status(500).json({message: "Internal Server Error"})
     }
 };
@@ -144,6 +144,35 @@ const getPatients = async (req, res) => {
     }
 }
 
+// Get All Requests for a user
+const getRequests = async (req, res) =>{
+
+    try{
+        const user_id = req.params.user_id;
+        const requests = await userServices.getRequests(user_id);
+        return res.status(200).json(requests);
+    }
+    catch(err){
+        console.error("Error When Retrieving Requests: ", err);
+        return res.status(500).json({message: "Internal Server Error"});
+    }
+};
+
+// Get Specific User
+const getUser = async (req, res) => {
+
+    try{
+        const id = req.params.id;
+        const [user] = await userServices.fetchUser(id);
+        //console.log(user);
+        return res.status(200).json(user);
+    }
+    catch(err){
+        console.error("Error When Retrieving User: ", err);
+        return res.status(500).json({message: "Internal Server Error"});
+    }
+}
+
 export default {
     registerUser,
     loginUser,
@@ -151,5 +180,7 @@ export default {
     getAppointments,
     getActivities,
     getPatients,
-    resetPassword 
+    resetPassword,
+    getRequests,
+    getUser 
 };
