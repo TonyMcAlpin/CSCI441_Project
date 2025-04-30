@@ -21,33 +21,34 @@ const getActivity = async (req, res) => {
 };
 
 const addActivity = async (req, res) => {
-
-    // Grab user id from url
+    // Grab user id from URL
     const user_id = req.params.user_id;
 
-    //Check that all fields are filled out
-    if(!Object.values(req.body).every(value => value)){
-        return res.status(400).json({message: "Missing Required Fields."});
+    // Destructure the body to explicitly get fields
+    const { act_date, activityDuration, comments } = req.body;
+
+    // Check that all fields are filled out and valid
+    if (!act_date || !activityDuration || !comments || isNaN(activityDuration)) {
+        return res.status(400).json({ message: "Missing required fields or invalid data." });
     }
 
-    try{    
-        await activityServices.addActivity(...Object.values(req.body),user_id);
-        res.status(201).json({message: "Activity Added Successfully!"});
+    try {
+        // Call service to add the activity
+        await activityServices.addActivity(act_date, activityDuration, comments, user_id);
+        res.status(201).json({ message: "Activity Added Successfully!" });
+    } catch (err) {
+        console.error("Error when adding activity:", err);
+        return res.status(500).json({ message: "Internal Server Error." });
     }
-    catch(err){
-        console.error("Error When Adding Activity: ", err);
-        return res.status(500).json({message: "Internal Server Error."});
-    }
-
-
 };
+
 
 const updateActivity = async (req, res) => {
 
     //Grab Activity ID from url
     const act_id = req.params.id;
 
-    //check that all fields are field out
+    //check that all fields are filled out
     if(!Object.values(req.body).every(field => field)){
         return res.status(400).json({message: "Missing Required Fields."});
     }
@@ -91,9 +92,36 @@ const deleteActivity = async (req, res) => {
      
 };
 
+const getAverageActivity = async (req, res) => {
+    const { start_date, end_date } = req.query;
+    const { user_id } = req.params;
+
+    // Check if the dates are provided
+    if (!start_date || !end_date) {
+        return res.status(400).json({ message: "Please provide both start_date and end_date" });
+    }
+
+
+    try {
+        const result = await activityServices.getAverageActivity(user_id, start_date, end_date);
+
+        if (result.length > 0) {
+            const average_duration = result[0].average_duration;
+            res.status(200).json({ average_duration });
+        } else {
+            res.status(200).json({ average_duration: null });
+        }
+    } catch (err) {
+        console.error("Error calculating average:", err);
+        res.status(500).json({ message: "Error calculating average" });
+    }
+};
+
+
 export default{
     getActivity,
     addActivity,
     updateActivity,
-    deleteActivity
+    deleteActivity,
+    getAverageActivity
 }
