@@ -34,7 +34,7 @@
                         </tr>
                     </thead>
                     <tbody id="tableBody">
-                        <!--Dynamic Data Goes Here-->
+                       
                     </tbody>
                 </table>
             </div>
@@ -68,7 +68,7 @@
         </div>
 
 
-        <!-- Edit Modal -->
+        
         <div class="modal fade pt-5" id="editModal" tabindex="-1" aria-hidden="true" >
             <div class="modal-dialog" style="background-color: #ff6666; color:white;">
                 <form class="modal-content" id="editForm" method="post">
@@ -99,6 +99,35 @@
         </div>
 
 
+
+
+   
+<div class="col-md-4 col-sm-12 mx-auto">
+    <div class="card">
+        <div class="card-header" style="background-color: #8b0000; color: white;">
+            Calculate Average Exercise per Day
+        </div>
+        <div class="card-body" style="background-color: #ff6666; color:white;">
+            <form id="averageForm">
+                <label for="startDate">Start Date:</label>
+                <input type="date" id="startDate" name="startDate" required>
+                
+                <label for="endDate">End Date:</label>
+                <input type="date" id="endDate" name="endDate" required>
+                
+                <input type="hidden" id="userId" value="1">  
+                <button id="average" class="btn" type="submit"
+                                style="background-color: #8b0000; color: white;">Calculate Average</button>
+            </form>
+            
+            <p id="averageResult" style="margin-top: 10px; color: white;">Average: N/A</p>
+        </div>
+    </div>
+</div>
+
+
+
+
     </main>
     <footer><a href="contactus.html">Contact Us</a></footer>
 </body>
@@ -107,6 +136,7 @@
 <script src="../js/activities/getUserAct.js"></script>
 <script src="../js/activities/deleteActivity.js"></script>
 <script src="../js/activities/updateActivity.js"></script>
+<script src="../js/activities/averageActivity.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </html>
