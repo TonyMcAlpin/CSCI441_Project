@@ -10,7 +10,6 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
     };
 
     try {
-      
         const response = await fetch("http://localhost:5000/api/users/login", {
             method: "POST",
             headers: {
@@ -19,15 +18,22 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
             body: JSON.stringify(loginData)
         });
 
+      
         if (response.ok) {
-            // Handle successful login
             const data = await response.json();
             console.log("Login success:", data);
-            // Redirect to index.html
-            window.location.href = "index.html"; // Replace with the correct path
+
+
+            localStorage.setItem('user_id', data.user.id);  
+            localStorage.setItem('user_role', data.user.role);  
+
+            
+            setTimeout(() => {
+                window.location.href = "index.html";  // Redirect after login success
+            }, 1000);  
         } else {
-            // Handle failed login
             const errorData = await response.json();
+            console.error("Login failed:", errorData);
             document.getElementById("loginError").textContent = errorData.message;
             document.getElementById("loginError").style.display = "block";
         }
