@@ -55,12 +55,29 @@ async function deleteActivity(id){
 
 }
 
+//Get average activity per day from selected time 
+
+async function getAverageActivity(user_id, start_date, end_date) {
+        const [result] = await db.query(
+            `SELECT AVG(duration) AS average_duration
+             FROM activities
+             WHERE user_id = ? AND act_date BETWEEN ? AND ?`,
+            [user_id, start_date, end_date]
+        );
+
+        // Return the result with average duration
+        return result; 
+    }
+
+
+
 
 export default{
     getActivity,
     addActivity,
     updateActivity,
-    deleteActivity
+    deleteActivity,
+    getAverageActivity
 }
 
 
