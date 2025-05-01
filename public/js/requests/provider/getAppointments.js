@@ -3,18 +3,21 @@ const getPatientAppointments = async (patient_id) => {
     const tableHeaders = document.getElementById("tableHeaders");
     tableHeaders.innerHTML = '';
     const date = document.createElement('th');
+    const time = document.createElement('th');
     const title = document.createElement('th');
     const provider = document.createElement('th');
     const purpose = document.createElement('th');
     const phone = document.createElement('th');
     const email = document.createElement('th');
     date.textContent = "Date";
+    time.textContent = "Time";
     title.textContent = "Title";
     provider.textContent = "Provider";
     purpose.textContent = "Purpose";
     phone.textContent = "Phone";
     email.textContent = "Email";
     tableHeaders.appendChild(date);
+    tableHeaders.appendChild(time);
     tableHeaders.appendChild(title);
     tableHeaders.appendChild(provider);
     tableHeaders.appendChild(purpose);
@@ -58,9 +61,12 @@ const getPatientAppointments = async (patient_id) => {
                 // Create the data cells
 
                 const dateCell = document.createElement("td");
-
                 const date = new Date(appointment.app_date);
                 dateCell.textContent = date.toLocaleDateString("en-US");
+
+                const timeCell = document.createElement("td");
+                const time = new Date(appointment.app_time);
+                timeCell.textContent = time.toLocaleDateString("en-US", {hour: '2-digit', minute: '2-digit'});
 
                 const titleCell = document.createElement("td");
                 titleCell.textContent = appointment.medical_title;
@@ -79,6 +85,7 @@ const getPatientAppointments = async (patient_id) => {
 
                 // Append data cells onto row
                 row.appendChild(dateCell);
+                row.appendChild(timeCell);
                 row.appendChild(titleCell);
                 row.appendChild(nameCell);
                 row.appendChild(purposeCell);

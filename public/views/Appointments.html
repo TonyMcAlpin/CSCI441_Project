@@ -42,6 +42,10 @@
                                 <input type="date" class="form-control" name="app_date" id="appointmentDate">
                             </div>
                             <div class="mb-3">
+                                <label for="appointmentTime" class="form-label">Time:</label>
+                                <input type="time" class="form-control" name="app_time" id="appointmentTime">
+                            </div>
+                            <div class="mb-3">
                                 <label for="medTitle" class="form-label">Medical Title: </label>
                                 <input type="text" class="form-control" name="medical_title" id="medTitle"
                                     placeholder="Dentist, Pediatrician, etc...">
@@ -90,6 +94,10 @@
                             <input type="date" class="form-control" id="editDate" name="app_date" required>
                         </div>
                         <div class="mb-3">
+                            <label for="editTime" class="form-label">Time</label>
+                            <input type="time" class="form-control" id="editDate" name="app_time" required>
+                        </div>
+                        <div class="mb-3">
                             <label for="editTitle" class="form-label">Title</label>
                             <input type="text" class="form-control" id="editTitle" name="medical_title" required>
                         </div>
@@ -129,6 +137,7 @@
                 </div>
                 <div class="modal-body">
                     <p><strong>Date:</strong> <span id="eventDate"></span></p>
+                    <p><strong>Time:</strong> <span id="eventTime"></span></p>
                     <p><strong>Medical Title:</strong> <span id="eventTitle"></span></p>
                     <p><strong>Provider Name:</strong> <span id="eventProvider"></span></p>
                     <p><strong>Purpose:</strong> <span id="eventPurpose"></span></p>
@@ -157,6 +166,10 @@
                     <div class="mb-3">
                         <label for="editDate" class="form-label">Date:</label>
                         <input type="date" class="form-control" id="editDate" name="app_date" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editTime" class="form-label">Time:</label>
+                        <input type="time" class="form-control" id="editTime" name="app_time" required>
                     </div>
                     <div class="mb-3">
                         <label for="editMedical_Title" class="form-label">Medical Title:</label>

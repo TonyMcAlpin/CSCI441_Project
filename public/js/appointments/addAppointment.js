@@ -9,8 +9,23 @@ document.getElementById("addAppForm").addEventListener("submit", async (e) => {
     // Creates a Javascript Object out of the Form Entry Values
     const formObject = Object.fromEntries(formData.entries());
 
+    console.log("Form Data:", formObject);
+
+    
+
     // Grabs the user id from local storage to use in api call
     const user_id = localStorage.getItem("user_id");
+
+    console.log("User ID:", user_id);
+
+     // Validate user_id
+     if (!user_id) {
+        alert("User ID is missing. Please log in again.");
+        return;
+    }
+
+    // Add user_id to the form data object before sending
+    formObject.user_id = user_id;
 
     try{
         const response = await fetch(`http://localhost:5000/api/appointments/${user_id}`, {

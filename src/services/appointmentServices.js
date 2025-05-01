@@ -15,12 +15,16 @@ async function getAppointment(id){
 
 // POST: Add a New Appointment
 
-async function addAppointment(app_date, medical_title, provider_name, purpose, phone_number, provider_email, user_id){
+async function addAppointment(app_date, medical_title, provider_name, purpose, phone_number, provider_email, user_id, app_time){
+    // Ensure time format is HH:MM:SS
+    const normalizedTime = app_time.length === 5 ? app_time + ":00" : app_time;
+    // console.log("Normalized time: ", normalizedTime);
+
 
         const [result] = await db.query(
-            `INSERT INTO appointments(app_date, medical_title, provider_name, purpose, phone_number, provider_email, user_id)
-            VALUES(?,?,?,?,?,?,?)`,
-            [app_date, medical_title, provider_name, purpose, phone_number, provider_email, user_id]
+            `INSERT INTO appointments(app_date, medical_title, provider_name, purpose, phone_number, provider_email, user_id, app_time)
+            VALUES(?,?,?,?,?,?,?,?)`,
+            [app_date, medical_title, provider_name, purpose, phone_number, provider_email, user_id, normalizedTime]
         );
         
         return result; //Return result to be used by controller
@@ -28,13 +32,15 @@ async function addAppointment(app_date, medical_title, provider_name, purpose, p
 }
 
 // PUT: Update exisiting appointment by id
-async function updateAppointment(app_date, medical_title, provider_name, purpose, phone_number, provider_email, id){
+async function updateAppointment(app_date, app_time, medical_title, provider_name, purpose, phone_number, provider_email, id){
+    // Ensure time format is HH:MM:SS
+    const normalizedTime = app_time.length === 5 ? app_time + ":00" : app_time;
 
         const [result] = await db.query(
             `UPDATE appointments
-             SET app_date = ?, medical_title = ?, provider_name = ?, purpose = ?, phone_number = ?, provider_email = ?
+             SET app_date = ?, app_time = ?, medical_title = ?, provider_name = ?, purpose = ?, phone_number = ?, provider_email = ?
              WHERE (id = ?)`,
-             [app_date, medical_title, provider_name, purpose, phone_number, provider_email, id]
+             [app_date, normalizedTime, medical_title, provider_name, purpose, phone_number, provider_email, id]
         );
         
         return result; //Return result to be used by controller

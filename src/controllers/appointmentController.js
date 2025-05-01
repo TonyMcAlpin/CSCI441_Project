@@ -27,7 +27,7 @@ const addAppointment = async (req, res) => {
     const user_id = req.params.user_id;
 
     // name of required fields
-    const requiredFields = ["app_date", "purpose"];
+    const requiredFields = ["app_date", "purpose", "app_time"];
 
     // Check if all reqiured fields are filled
     if(!requiredFields.every(field => req.body[field])){
@@ -36,7 +36,9 @@ const addAppointment = async (req, res) => {
 
     try{
 
-        await appointmentServices.addAppointment(...Object.values(req.body),user_id);
+        const { app_date, medical_title, provider_name, purpose, phone_number, provider_email, app_time } = req.body;
+        await appointmentServices.addAppointment(app_date, medical_title, provider_name, purpose, phone_number, provider_email, user_id, app_time);
+
         return res.status(201).json({message: "Appointment Created Successfully!"});
     }
     catch(err){
