@@ -23,9 +23,9 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
             // if successful 
             const data = await response.json();
             console.log("Login success:", data);
-            // Grabs user_id from local storage for use with api calls
-            localStorage.setItem("user_id", data.user.id);
-            localStorage.setItem("role", data.user.role)
+            // Grabs user_id from session storage for use with api calls
+            sessionStorage.setItem("user_id", data.user.id);
+            sessionStorage.setItem("role", data.user.role)
             if(data.user.role == 1){
                 // Redirect to Patient Dashboard
                 window.location.href = "index.html"; 

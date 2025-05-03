@@ -6,7 +6,7 @@ document.getElementById("recordRequest").addEventListener("submit", async (e) =>
     const formObject = Object.fromEntries(formData.entries());
 
 
-    const provider_id = localStorage.getItem("user_id");
+    const provider_id = sessionStorage.getItem("user_id");
 
     try{
         const response = await fetch(`http://localhost:5000/api/requests/${provider_id}`, {

@@ -24,8 +24,8 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
             console.log("Login success:", data);
 
 
-            localStorage.setItem('user_id', data.user.id);  
-            localStorage.setItem('user_role', data.user.role);  
+            sessionStorage.setItem('user_id', data.user.id);  
+            sessionStorage.setItem('user_role', data.user.role);  
 
             
             setTimeout(() => {

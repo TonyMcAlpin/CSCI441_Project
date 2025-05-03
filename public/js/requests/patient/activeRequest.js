@@ -2,7 +2,7 @@
 document.addEventListener("DOMContentLoaded", async () => {
 
     const tableBody = document.getElementById("tableBody");
-    const user_id = localStorage.getItem("user_id");
+    const user_id = sessionStorage.getItem("user_id");
     try{
         const response = await fetch(`http://localhost:5000/api/users/requests/${user_id}`, {
             method: 'GET',
@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 document.addEventListener("DOMContentLoaded", async () => {
 
     const tableBody = document.getElementById("accpetedBody");
-    const user_id = localStorage.getItem("user_id");
+    const user_id = sessionStorage.getItem("user_id");
     try{
         const response = await fetch(`http://localhost:5000/api/users/requests/${user_id}`, {
             method: 'GET',
@@ -133,7 +133,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                 row.appendChild(nameCell);
                 row.appendChild(statusCell);
                 tableBody.appendChild(row);
-
             }
         }
     }
