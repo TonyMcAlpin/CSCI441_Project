@@ -13,8 +13,8 @@ document.getElementById("addAppForm").addEventListener("submit", async (e) => {
 
     
 
-    // Grabs the user id from local storage to use in api call
-    const user_id = localStorage.getItem("user_id");
+    // Grabs the user id from session storage to use in api call
+    const user_id = sessionStorage.getItem("user_id");
 
     console.log("User ID:", user_id);
 

@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const tableBody = document.getElementById("tableBody");
 
-    const user_id = localStorage.getItem("user_id");
+    const user_id = sessionStorage.getItem("user_id");
 
     try{
         const response = await fetch(`http://localhost:5000/api/users/activities/${user_id}`, {

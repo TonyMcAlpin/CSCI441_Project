@@ -7,7 +7,7 @@ document.getElementById("appEditForm").addEventListener("submit", async (e) => {
     // Convert Form Data into Javascript Object
     const formObject = Object.fromEntries(formData.entries());
 
-    // Grab the user_id from localstorage
+    // Grab the user_id from sessionstorage
     const id = document.getElementById("editId").value;
 
 

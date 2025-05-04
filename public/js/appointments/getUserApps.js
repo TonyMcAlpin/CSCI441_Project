@@ -3,8 +3,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Find the calendar
     const calendarElement = document.getElementById("calendar");
 
-    // Get user_id from local storage
-    const user_id = localStorage.getItem("user_id");
+    // Get user_id from session storage
+    const user_id = sessionStorage.getItem("user_id");
 
     const calendar = new FullCalendar.Calendar(calendarElement, {
         initialView: 'dayGridMonth',

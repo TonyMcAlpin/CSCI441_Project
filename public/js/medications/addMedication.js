@@ -7,8 +7,8 @@ document.getElementById("addMedForm").addEventListener("submit", async (e) => {
     // Creates a Javascript Object out of the Form Entry Values
     const formObject = Object.fromEntries(formData.entries()); 
 
-    // Grabs the user id from local storage to use in api call
-    const user_id = localStorage.getItem("user_id");
+    // Grabs the user id from session storage to use in api call
+    const user_id = sessionStorage.getItem("user_id");
 
     try{
         const response = await fetch(`http://localhost:5000/api/medications/${user_id}`, {

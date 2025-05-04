@@ -7,10 +7,10 @@ form.addEventListener('submit', async (e) => {
     const endDate = document.getElementById('endDate').value;
 
     // Get userId 
-    const userId = localStorage.getItem("user_id"); 
+    const userId = sessionStorage.getItem("user_id"); 
 
     if (!userId) {
-        console.error("User ID is not available in localStorage");
+        console.error("User ID is not available in sessionStorage");
         document.getElementById('averageResult').textContent = "Error: User ID not found.";
         return;
     }

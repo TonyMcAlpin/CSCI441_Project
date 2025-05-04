@@ -7,8 +7,8 @@ document.getElementById("addActForm").addEventListener("submit", async (e) => {
     // Convert Form Data into Javascript Object
     const formObject = Object.fromEntries(formData.entries());
 
-    // Grab the user_id from localstorage
-    const user_id = localStorage.getItem("user_id");
+    // Grab the user_id from sessionstorage
+    const user_id = sessionStorage.getItem("user_id");
 
 
     try{
