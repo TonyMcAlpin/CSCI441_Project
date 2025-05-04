@@ -4,7 +4,7 @@
         text-align: center !important;
         background-color: #ffcccc !important; 
         color: white !important;
-        margin-top: 0.5rem !important;
+        margin-top: 0 !important;
         margin-left: 0.5rem !important; 
         margin-right: 0.5rem !important;
         display: flex !important;
@@ -228,3 +228,20 @@ th{
     color: black;
  }
 
+/* Match nav links exactly */
+#logoutBtn {
+    background: none;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    font-size: 1em;
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+    transition: background 0.3s ease;
+}
+
+/* Match hover effect with slightly different color */
+#logoutBtn:hover {
+    background-color: #5f0000;
+}
