@@ -1,16 +1,13 @@
-document.addEventListener('DOMContentLoaded', function() {
-    console.log("PHER Page Loaded");
-});
-
-
-import { requestNotificationPermission, scheduleNotification } from './notifications.js';  // Adjust path if necessary
+//import { requestNotificationPermission, scheduleNotification } from './notifications.js';  // Adjust path if necessary
 
 document.addEventListener("DOMContentLoaded", async () => {
+    console.log("PHER Page Loaded");
+
     // Request permission for notifications
     requestNotificationPermission();
 
-    // Get user ID from local storage
-    const user_id = localStorage.getItem("user_id");
+    // Get user ID from session storage
+    const user_id = sessionStorage.getItem("user_id");
 
     try {
         const response = await fetch(`http://localhost:5000/api/users/appointments/${user_id}`, {
