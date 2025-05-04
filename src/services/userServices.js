@@ -84,7 +84,8 @@ async function getMedications(user_id){
 
     const [medications] = await db.query( 
         `SELECT * FROM medications
-        WHERE (user_id = ?)`,
+        WHERE (user_id = ?)
+        ORDER BY start_date DESC`,
         [user_id]
     );
     return medications;
@@ -96,7 +97,8 @@ async function getAppointments(user_id){
    
         const [appointments] = await db.query(
             `SELECT * FROM appointments
-            WHERE (user_id = ?)`,
+            WHERE (user_id = ?)
+            ORDER BY app_date DESC`,  //may not be needed because of the calendar?
             [user_id]
         );
         return appointments;
@@ -108,7 +110,8 @@ async function getActivities(id){
 
         const [activities] = await db.query(
             `SELECT * FROM activities
-             WHERE (user_id = ?)`,
+             WHERE (user_id = ?)
+             ORDER BY act_date DESC`,
              [id]
         );
 
