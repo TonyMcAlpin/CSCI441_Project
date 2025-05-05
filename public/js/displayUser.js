@@ -15,7 +15,11 @@ document.addEventListener('DOMContentLoaded', async function getFullName() {
             const user = await response.json();
         
             const nameCell = document.getElementById('fullName');
-            nameCell.textContent = `${user.first_name} ${user.last_name}`;
+            if(nameCell){
+                nameCell.textContent = `${user.first_name} ${user.last_name}`;
+            }
+            const dashboardTitle = document.title;
+            document.title = `${dashboardTitle} ${user.first_name} ${user.last_name}`;
 
         }
 
