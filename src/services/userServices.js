@@ -215,6 +215,25 @@ async function getRequests(user_id){
 }
 
 
+// Get user's weekly activity goal
+async function getActivityGoal(user_id) {
+    const [result] = await db.query(
+        `SELECT activity_goal FROM users WHERE id = ?`,
+        [user_id]
+    );
+    return result;
+}
+
+// Set or update user's weekly activity goal
+async function setActivityGoal(user_id, goal) {
+    const [result] = await db.query(
+        `UPDATE users SET activity_goal = ? WHERE id = ?`,
+        [goal, user_id]
+    );
+    return result;
+}
+
+
 
 export default {
     fetchUsers,
@@ -229,7 +248,10 @@ export default {
     validateUserLogin,
     getPatients,
     fetchUserByUsername,
-    updateUserPassword
+    updateUserPassword,
+    getActivityGoal,
+    setActivityGoal
+
 };
 
 
