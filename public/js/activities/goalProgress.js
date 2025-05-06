@@ -19,15 +19,11 @@ function getCurrentWeekRange() {
     };
 }
 
-
-
 async function loadGoalProgress() {
     const userId = sessionStorage.getItem("user_id");  
+    const goalEl = document.getElementById("goal-progress") || document.getElementById("dashboard-goal-progress");
 
-    if (!userId) {
-        document.getElementById("goal-progress").textContent = "User ID not found.";
-        return;
-    }
+    if (!userId || !goalEl) return;
 
     const { start, end } = getCurrentWeekRange();
 
@@ -43,11 +39,10 @@ async function loadGoalProgress() {
         const goal = goalData.goal || 0;
         const total = totalData.total_duration || 0;
 
-        document.getElementById("goal-progress").textContent =
-            `You've completed ${total} / ${goal} minutes this week.`;
+        goalEl.textContent = `You've completed ${total} / ${goal} minutes this week.`;
     } catch (err) {
         console.error("Error loading goal progress:", err);
-        document.getElementById("goal-progress").textContent = "Error loading goal progress.";
+        goalEl.textContent = "Error loading goal progress.";
     }
 }
 
