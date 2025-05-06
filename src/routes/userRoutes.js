@@ -15,6 +15,9 @@ router.get("/requests/:user_id", userController.getRequests);
 
 router.get("/patients", userController.getPatients);
 router.get("/:id", userController.getUser);
+router.get("/goal/:user_id", userController.getActivityGoal);
+
+router.put("/goal/:user_id", userController.setActivityGoal);
 
 export default router;
 
