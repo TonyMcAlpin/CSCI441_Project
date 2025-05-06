@@ -69,7 +69,16 @@ async function getAverageActivity(user_id, start_date, end_date) {
         return result; 
     }
 
-
+// Get total activity duration for current week (Used for Goal Functions) 
+async function getWeeklyTotalActivity(user_id, week_start, week_end) {
+    const [result] = await db.query(
+        `SELECT SUM(duration) AS total_duration
+         FROM activities
+         WHERE user_id = ? AND act_date BETWEEN ? AND ?`,
+        [user_id, week_start, week_end]
+    );
+    return result;
+}
 
 
 export default{
@@ -77,7 +86,8 @@ export default{
     addActivity,
     updateActivity,
     deleteActivity,
-    getAverageActivity
+    getAverageActivity,
+    getWeeklyTotalActivity
 }
 
 
