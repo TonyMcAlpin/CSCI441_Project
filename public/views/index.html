@@ -62,14 +62,24 @@
                                         <th>Stop Sharing</th>
                                     </tr>
                                 </thead>
-                                <tbody id="acceptedBody">
+                                <tbody id="accpetedBody">
                                     <!--Dynamic Data Goes Here-->
                                 </tbody>
                             </table>
                         </div>
                     </div>
+
+                    <div class="card mt-3">
+                        <div class="card-header" style="background-color: #8b0000; color: white;">
+                            Weekly Goal Progress
+                        </div>
+                        <div class="card-body" style="background-color: #ff6666; color:white;">
+                            <p id="dashboard-goal-progress">Loading goal progress...</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </div>   
+
         </main>
 </body>
 <footer><a href="contactus.html">Contact Us</a></footer>
@@ -79,6 +89,7 @@
 <script src="../js/requests/patient/requestDecision.js"></script>
 <script src="../js/appointments/getUserApps.js"></script>
 <script src="../js/requests/patient/activeRequest.js"></script>
+<script src="../js/activities/goalProgress.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.js"></script>
 
 </html>
