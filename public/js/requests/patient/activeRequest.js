@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             for(const request of data) {
 
-                if(request.close_date !== null || request.accept_date !== null){
+                if(request.accept_date !== null || request.cancel_date !== null || request.close_date !== null){
                     continue;
                 }
 
@@ -99,7 +99,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             for(const request of data) {
 
-                if(request.close_date !== null || request.accept_date === null){
+                if(request.accept_date === null || request.cancel_date !== null || request.close_date !== null){
                     continue;
                 }
 
