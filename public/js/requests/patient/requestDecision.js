@@ -1,117 +1,97 @@
 // requestDecision.js
-const requestDecision = async (accepted, closed, request_id) => {
-    switch (closed) {
-        case 1:
-            if (!confirm("Are you sure you want to Stop Sharing your record?")) return;
-            try {
-                const response = await fetch(`http://localhost:5000/api/requests/${request_id}`, {
-                    method: 'PUT',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        'accepted': 1,
-                        'closed': 1
-                    })
-                });
+const requestDecision = async (decision, request_id) => {
 
-                if (response.ok) {
-                    alert("The Request Has Been Closed. You Are No Longer Sharing This Record.");
-                    location.reload();
-                }
-                else {
-                    let errorText;
-                    try {
-                        const error = await response.json();
-                        errorText = error.message || JSON.stringify(error);
-                    } catch {
-                        errorText = await response.text();
-                    }
-                    console.error("Error response:", errorText);
-                    alert("Error When Closing Request: " + errorText);
-                }
+    if (decision === 'ACCEPT'){
+        if (!confirm("Are you sure you want to Accept this request?")) return;
+        try {
+            const response = await fetch(`http://localhost:5000/api/requests/${request_id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    'accept_date': new Date().toISOString(),
+                    'close_date': null
+                })
+            });
+
+            if (response.ok) {
+                alert("The Request Has Been Accepted. You Are Now Sharing This Record.");
+                location.reload();
             }
-            catch (err) {
-                console.error("Error When Closing Request: ", err);
-                alert("Error When Closing Request:");
+            else {
+                let errorText;
+                try {
+                    const error = await response.json();
+                    errorText = error.message || JSON.stringify(error);
+                } catch {
+                    errorText = await response.text();
+                }
+                console.error("Error response:", errorText);
+                alert("Error When Accepting Request: " + errorText);
             }
-            return;
-        default:
-            break;
+        }
+        catch (err) {
+            console.error("Error when accepting request: ", err);
+            alert("Error when accepting request:");
+        }
+        return;
     }
 
-    switch (accepted) {
-        case 0:
-            if (!confirm("Are you sure you want to Decline this request?")) return;
-            try {
-                const response = await fetch(`http://localhost:5000/api/requests/${request_id}`, {
-                    method: 'PUT',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        'accepted': 0,
-                        'closed': 1
-                    })
-                });
+    if (decision === 'DECLINE') {
+        if (!confirm("Are you sure you want to Decline this request?")) return;
+        try {
+            const response = await fetch(`http://localhost:5000/api/requests/${request_id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    'close_date': new Date().toISOString()
+                    //,'decline_date': new Date().toISOString() //will make specific to decline_date
+                })
+            });
 
-                if (response.ok) {
-                    alert("The Request Has Been Declined.");
-                    location.reload();
-                }
-                else {
-                    let errorText;
-                    try {
-                        const error = await response.json();
-                        errorText = error.message || JSON.stringify(error);
-                    } catch {
-                        errorText = await response.text();
-                    }
-                    console.error("Error response:", errorText);
-                    alert("Error When Declining Request: " + errorText);
-                }
+            if (response.ok) {
+                alert("The request has been declined.");
+                location.reload();
             }
-            catch (err) {
-                console.error("Error When Declining Request: ", err);
-                alert("Error When Declining Request:");
-            }
-            return;
-        default:
-            if (!confirm("Are you sure you want to Accept this request?")) return;
-            try {
-                const response = await fetch(`http://localhost:5000/api/requests/${request_id}`, {
-                    method: 'PUT',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        'accepted': 1,
-                        'closed': 0
-                    })
-                });
 
-                if (response.ok) {
-                    alert("The Request Has Been Accepted. You Are Now Sharing This Record.");
-                    location.reload();
-                }
-                else {
-                    let errorText;
-                    try {
-                        const error = await response.json();
-                        errorText = error.message || JSON.stringify(error);
-                    } catch {
-                        errorText = await response.text();
-                    }
-                    console.error("Error response:", errorText);
-                    alert("Error When Accepting Request: " + errorText);
-                }
-            }
-            catch (err) {
-                console.error("Error When Accepting Request: ", err);
-                alert("Error When Accepting Request:");
-            }
-            return;
+        }
+        catch (err) {
+            console.error("Error when declining request: ", err);
+            alert("Error when declining request:");
+        }
+        return;
     }
+    
+    if (decision === 'STOP') {
+        if (!confirm("Are you sure you want to Stop sharing data?")) return;
+        try {
+            const response = await fetch(`http://localhost:5000/api/requests/${request_id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    'close_date': new Date().toISOString()
+                    //,'stop_date': new Date().toISOString() //will make specific to stop_date
+                })
+            });
+
+            if (response.ok) {
+                alert("The request has been stopped.");
+                location.reload();
+            }
+
+        }
+        catch (err) {
+            console.error("Error when stopping request: ", err);
+            alert("Error when stopping request:");
+        }
+        return;
+    }
+
 };
 
 

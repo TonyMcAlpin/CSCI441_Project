@@ -1,3 +1,41 @@
+function closeRequest(requestId) {
+
+    if (!confirm("Are you sure you want to close this request?")) return;
+
+    fetch(`http://localhost:5000/api/requests/close/${requestId}`, {
+        method: "PUT",
+    })
+    .then(res => res.json())
+    .then(data => {
+        alert(data.message);    
+        location.reload(); 
+    })
+    .catch(err => {
+        console.error("Error closing request:", err);
+        alert("Failed to close request.");
+    });
+}
+
+function cancelRequest(requestId) {
+
+    if (!confirm("Are you sure you want to cancel this request?")) return;
+
+    fetch(`http://localhost:5000/api/requests/cancel/${requestId}`, {
+        method: "PUT",
+    })
+    .then(res => res.json())
+    .then(data => {
+        alert(data.message);    
+        location.reload(); 
+    })
+    .catch(err => {
+        console.error("Error cancel request:", err);
+        alert("Failed to cancel request.");
+    });
+}
+
+
+
 //Pending Requests
 document.addEventListener("DOMContentLoaded", async () => {
 
@@ -14,17 +52,18 @@ document.addEventListener("DOMContentLoaded", async () => {
         if(response.ok){
 
             const data = await response.json();    
+            console.log('API Response:', data);
 
             tableBody.innerHTML = "";
 
             for(const request of data) {
+                console.log('Individual request:', request);
 
-                if(request.accepted != 2){
+                if(request.accept_date !== null || request.cancel_date !== null || request.close_date !== null){
                     continue;
                 }
 
                 const patient_id = request.patient_id;
-
 
                 const patientRes = await fetch(`http://localhost:5000/api/users/${patient_id}`, {
                     method: 'GET',
@@ -43,10 +82,20 @@ document.addEventListener("DOMContentLoaded", async () => {
                 const statusCell = document.createElement('td');
                 statusCell.textContent = 'Pending';
 
+                //Create button to cancel request
+                const cancelCell = document.createElement("td");
+                const cancelButton = document.createElement("button");
+                cancelButton.textContent = "Cancel";
+                cancelButton.classList.add("btn", "btn-danger");
+                cancelCell.appendChild(cancelButton);
+                cancelButton.addEventListener("click", () => {
+                    cancelRequest(request.id); 
+                });
 
 
                 row.appendChild(nameCell);
                 row.appendChild(statusCell);
+                row.appendChild(cancelCell);
                 tableBody.appendChild(row);
 
             }
@@ -79,13 +128,11 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             for(const request of data) {
 
-                if(request.accepted != 1 || request.closed == 1){
+                if(request.accept_date === null || request.cancel_date !== null || request.close_date !== null){
                     continue;
                 }
 
                 const patient_id = request.patient_id;
-
-
                 const patientRes = await fetch(`http://localhost:5000/api/users/${patient_id}`, {
                     method: 'GET',
                     headers: {
@@ -100,13 +147,24 @@ document.addEventListener("DOMContentLoaded", async () => {
                 const nameCell = document.createElement('td');
                 nameCell.textContent = `${patient.last_name}, ${patient.first_name}`;
 
-                const statusCell = document.createElement('td');
+                const viewCell = document.createElement('td');
                 const viewButton = document.createElement('button');
                 viewButton.textContent = 'View';
                 viewButton.classList.add('btn', 'btn-primary');
                 viewButton.setAttribute('data-bs-toggle', 'modal');
                 viewButton.setAttribute('data-bs-target', '#patientModal');
-                statusCell.appendChild(viewButton);
+                viewCell.appendChild(viewButton);
+
+                //Create button to close request
+                const closeCell = document.createElement("td");
+                const closeButton = document.createElement("button");
+                closeButton.textContent = "Close";
+                closeButton.classList.add("btn", "btn-danger");
+                closeCell.appendChild(closeButton);
+                closeButton.addEventListener("click", () => {
+                    closeRequest(request.id); 
+                });
+
                 viewButton.addEventListener('click', () => {
                     document.getElementById('modalHeader').textContent = `Record For ${patient.last_name}, ${patient.first_name}`;
                         const modalList = document.getElementById('modalList');
@@ -149,7 +207,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                 });
 
                 row.appendChild(nameCell);
-                row.appendChild(statusCell);
+                row.appendChild(viewCell);
+                row.appendChild(closeCell);
                 tableBody.appendChild(row);
 
             }

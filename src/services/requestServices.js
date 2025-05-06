@@ -22,23 +22,43 @@ const makeRequest = async (patient_id, provider_id) => {
     return result;
 }
 
-const updateRequest = async (accepted, closed, id) => {
+const updateRequest = async (accept_date, close_date, id) => {
     
     const [result] = await db.query(
         `UPDATE requests
-         SET accepted = ? , closed = ?
-         WHERE (id = ?)`,
-        [accepted, closed, id]
+         SET accept_date = ?, close_date = ?
+         WHERE id = ?`,
+        [accept_date, close_date, id]
     );
     return result;
 }
 
+const cancelRequest = async (id) => {
+    const [result] = await db.query(
+        `UPDATE requests
+         SET cancel_date = NOW()
+         WHERE id = ?`,
+        [id]
+    );
+    return result;
+};
 
+const closeRequest = async (id) => {
+    const [result] = await db.query(
+        `UPDATE requests
+         SET close_date = NOW()
+         WHERE id = ?`,
+        [id]
+    );
+    return result;
+};
 
 
 
 export default{
     getRequest,
     makeRequest,
-    updateRequest
+    updateRequest,
+    cancelRequest,
+    closeRequest
 }

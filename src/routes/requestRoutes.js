@@ -7,5 +7,7 @@ router.get("/:id", requestController.getRequest);
 router.post("/:provider_id", requestController.makeRequest);
 router.put("/:id", requestController.acceptDenyRequest);
 
+router.put("/cancel/:id", requestController.cancelRequest); 
+router.put("/close/:id", requestController.closeRequest); 
 
 export default router;

@@ -3,11 +3,11 @@ import requestServices from "../services/requestServices.js"
 // Get Request by id
 const getRequest = async (req,res) => {
 
-    const requests_id = req.params.id;
+    const request_id = req.params.id;
 
     try{
 
-        const request = await requestServices.getRequest(requests_id);
+        const request = await requestServices.getRequest(request_id);
 
         if(request.length === 0){
             return res.status(404).json({message: "Request Not Found"});
@@ -48,31 +48,56 @@ const makeRequest = async (req, res) => {
 // Accept/Deny Request
 const acceptDenyRequest = async (req, res) => {
 
-    const id = req.params.id;
-    const accepted = req.body['accepted'];
-    const closed = req.body['closed'];
+    const request_id = req.params.id;
+    const accept_date = req.body['accept_date'];
+    const close_date = req.body['close_date'];
 
     try{
-        await requestServices.updateRequest(accepted, closed, id);
-        return res.status(200).json({message: "Action Completed Successfully"})
+        await requestServices.updateRequest(accept_date, close_date, request_id);
+        return res.status(200).json({message: "Patient Answered Successfully"})
     }
     catch(err){
-        console.error("Error When Performing Action", err);
+        console.error("Error when patient responded to request", err);
         return res.status(500).json({message: "Internal Server Error"});
+    }
+};
+
+// Close Request
+const closeRequest = async (req, res) => {
+    
+    const request_id = req.params.id;
+    
+    try {
+        await requestServices.closeRequest(request_id);
+        return res.status(200).json({ message: "Request closed successfully" });
+    
+    } catch (err) {
+        console.error("Error when closing request", err);
+        return res.status(500).json({ message: "Internal Server Error" });
+    }
+};
+
+// Close Request
+const cancelRequest = async (req, res) => {
+    
+    const request_id = req.params.id;
+    
+    try {
+        await requestServices.cancelRequest(request_id);
+        return res.status(200).json({ message: "Request cancelled successfully" });
+
+    } catch (err) {
+        console.error("Error when cancelling request", err);
+        return res.status(500).json({ message: "Internal Server Error" });
     }
 };
 
 
 
-// Close Request
-// const closeRequest = async (req, res) => {
-
-// };
-
-
 export default {
     getRequest,
     makeRequest,
-    acceptDenyRequest
-    //closeRequest
+    acceptDenyRequest,
+    closeRequest, 
+    cancelRequest
 }

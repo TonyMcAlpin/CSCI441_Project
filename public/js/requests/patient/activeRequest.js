@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             for(const request of data) {
 
-                if(request.closed == 1 || request.accepted == 1){
+                if(request.close_date !== null || request.accept_date !== null){
                     continue;
                 }
 
@@ -50,15 +50,15 @@ document.addEventListener("DOMContentLoaded", async () => {
                 acceptButton.classList.add("btn", "btn-success");
                 statusCell.appendChild(acceptButton);
                 acceptButton.addEventListener("click", () => {
-                    requestDecision(1,0,request.id);
+                    requestDecision('ACCEPT',request.id);
                 });
 
-                const deleteButton = document.createElement("button");
-                deleteButton.textContent = "Decline";
-                deleteButton.classList.add("btn", "btn-danger", "ms-1");
-                statusCell.appendChild(deleteButton);
-                deleteButton.addEventListener("click", () => {
-                    requestDecision(0,0,request.id);
+                const declineButton = document.createElement("button");
+                declineButton.textContent = "Decline";
+                declineButton.classList.add("btn", "btn-danger", "ms-1");
+                statusCell.appendChild(declineButton);
+                declineButton.addEventListener("click", () => {
+                    requestDecision('DECLINE',request.id);
                 });
 
                 row.appendChild(nameCell);
@@ -81,7 +81,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 // Currently Sharing
 document.addEventListener("DOMContentLoaded", async () => {
 
-    const tableBody = document.getElementById("accpetedBody");
+    const tableBody = document.getElementById("acceptedBody");
     const user_id = sessionStorage.getItem("user_id");
     try{
         const response = await fetch(`http://localhost:5000/api/users/requests/${user_id}`, {
@@ -99,7 +99,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             for(const request of data) {
 
-                if(request.closed == 1 || request.accepted == 2){
+                if(request.close_date !== null || request.accept_date === null){
                     continue;
                 }
 
@@ -122,12 +122,12 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                 const statusCell = document.createElement('td');
 
-                const closeButton = document.createElement("button");
-                closeButton.textContent = "Close";
-                closeButton.classList.add("btn", "btn-danger", "ms-1");
-                statusCell.appendChild(closeButton);
-                closeButton.addEventListener("click", () => {
-                    requestDecision(1,1,request.id);
+                const stopButton = document.createElement("button");
+                stopButton.textContent = "Stop";
+                stopButton.classList.add("btn", "btn-danger", "ms-1");
+                statusCell.appendChild(stopButton);
+                stopButton.addEventListener("click", () => {
+                    requestDecision('STOP',request.id);
                 });
 
                 row.appendChild(nameCell);
