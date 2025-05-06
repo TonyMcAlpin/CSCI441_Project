@@ -22,131 +22,103 @@
             <li><button id="logoutBtn">Log Out</button></li>
         </ul>
     </nav>
-    <main>
-        <div class="row">
-            <div class="col-md-4 col-sm-12 mx-auto">
-                <table class="table table-striped table-hover">
-                    <thead>
-                        <tr>
-                            <th>Date</th>
-                            <th>Duration</th>
-                            <th>Description</th>
-                            <th>Delete/Edit</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tableBody">
-                        
-                    </tbody>
-                </table>
+    <main class="container mt-4">
+
+        
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header" style="background-color: #8b0000; color: white;">
+                        Logged Activities
+                    </div>
+                    <div class="card-body p-0">
+                        <table class="table table-striped table-hover m-0">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Duration</th>
+                                    <th>Description</th>
+                                    <th>Delete/Edit</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-4 col-sm-12 mx-auto">
+        </div>
+    
+
+        <div class="row g-4">
+            <div class="col-md-6">
                 <div class="card">
                     <div class="card-header" style="background-color: #8b0000; color: white;">
                         Add Activity
                     </div>
-                    <div class="card-body" style="background-color: #ff6666; color:white;">
+                    <div class="card-body" style="background-color: #ff6666; color: white;">
                         <form id="addActForm" method="post">
                             <div class="mb-3">
                                 <label for="activityDate" class="form-label">Date:</label>
-                                <input type="date" class="form-control" name="act_date" id="activityDate">
+                                <input type="date" class="form-control" id="activityDate" name="act_date" required>
                             </div>
                             <div class="mb-3">
-                                <label for="activityDuration" class="form-label">Duration:</label>
-                                <input type="number" class="form-control" name="activityDuration" id="activityDuration"
-                                    placeholder="Activity Length In Minutes">
+                                <label for="activityDuration" class="form-label">Duration (minutes):</label>
+                                <input type="number" class="form-control" id="activityDuration" name="activityDuration" required>
                             </div>
                             <div class="mb-3">
                                 <label for="activityDescription" class="form-label">Description:</label>
-                                <input type="text" class="form-control" name="comments" id="activityDescription"
-                                    placeholder="Lifted at the Gym, Went on a Run, etc...">
+                                <input type="text" class="form-control" id="activityDescription" name="comments" required>
                             </div>
-                            <button id="userSubmit" class="btn" type="submit"
-                                style="background-color: #8b0000; color: white;">Submit</button>
+                            <button class="btn" type="submit" style="background-color: #8b0000; color: white;">Submit</button>
                         </form>
                     </div>
                 </div>
             </div>
-        </div>
-
-
-        
-        <div class="modal fade pt-5" id="editModal" tabindex="-1" aria-hidden="true" >
-            <div class="modal-dialog" style="background-color: #ff6666; color:white;">
-                <form class="modal-content" id="editForm" method="post">
-                    <div class="modal-header" style="background-color: #8b0000; color: white;">
-                        <h5 class="modal-title">Edit Activity</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    
+            
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header" style="background-color: #8b0000; color: white;">
+                        Calculate Average Exercise Per Day
                     </div>
-                    <div class="modal-body" style="background-color: #ff6666; color:white;">
-                        <input type="hidden" id="editId">
-                        <div class="mb-3">
-                            <label for="editDate" class="form-label">Date</label>
-                            <input type="date" class="form-control" id="editDate" name="act_date" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="editDuration" class="form-label">Duration</label>
-                            <input type="number" class="form-control" id="editDuration" name="duration" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="editDescription" class="form-label">Description</label>
-                            <input type="text" class="form-control" id="editDescription" name="comments" required>
-                        </div>
+                    <div class="card-body" style="background-color: #ff6666; color: white;">
+                        <form id="averageForm">
+                            <div class="mb-3">
+                                <label for="startDate">Start Date:</label>
+                                <input type="date" id="startDate" name="startDate" class="form-control" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="endDate">End Date:</label>
+                                <input type="date" id="endDate" name="endDate" class="form-control" required>
+                            </div>
+                            <button class="btn" type="submit" style="background-color: #8b0000; color: white;">Calculate Average</button>
+                        </form>
+                        <p id="averageResult" class="mt-3">Average: N/A</p>
                     </div>
-                    <div class="modal-footer mx-auto">
-                        <button type="submit" class="btn" style="background-color: #8b0000; color: white;">Save changes</button>
+                </div>
+            </div>
+    
+            
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header" style="background-color: #8b0000; color: white;">
+                        Set Weekly Activity Goal
                     </div>
-                </form>
+                    <div class="card-body" style="background-color: #ff6666; color: white;">
+                        <form id="goal-form">
+                            <div class="mb-3">
+                                <label for="goal-input" class="form-label">Goal (minutes per week):</label>
+                                <input type="number" id="goal-input" class="form-control" placeholder="e.g. 150" required />
+                            </div>
+                            <button type="submit" class="btn" style="background-color: #8b0000; color: white;">Set Goal</button>
+                        </form>
+                        <p id="goal-progress" class="mt-3">Loading goal progress...</p>
+                    </div>
+                </div>
             </div>
         </div>
-
-
-
-
-   
-<div class="col-md-4 col-sm-12 mx-auto">
-    <div class="card">
-        <div class="card-header" style="background-color: #8b0000; color: white;">
-            Calculate Average Exercise per Day
-        </div>
-        <div class="card-body" style="background-color: #ff6666; color:white;">
-            <form id="averageForm">
-                <label for="startDate">Start Date:</label>
-                <input type="date" id="startDate" name="startDate" required>
-                
-                <label for="endDate">End Date:</label>
-                <input type="date" id="endDate" name="endDate" required>
-                
-                <input type="hidden" id="userId" value="1">  
-                <button id="average" class="btn" type="submit"
-                                style="background-color: #8b0000; color: white;">Calculate Average</button>
-            </form>
-            
-            <p id="averageResult" style="margin-top: 10px; color: white;">Average: N/A</p>
-        </div>
-    </div>
-</div>
-
-
-
-<div class="col-md-4 col-sm-12 mx-auto">
-    <div class="card">
-        <div class="card-header" style="background-color: #8b0000; color: white;">
-            Set Weekly Activity Goal
-        </div>
-        <div class="card-body" style="background-color: #ff6666; color:white;">
-            <form id="goal-form">
-                <div class="mb-3">
-                    <label for="goal-input" class="form-label">Goal (minutes per week):</label>
-                    <input type="number" id="goal-input" class="form-control" placeholder="e.g. 15" required />
-                </div>
-                <button type="submit" class="btn" style="background-color: #8b0000; color: white;">Set Goal</button>
-            </form>
-            <p id="goal-progress" style="margin-top: 10px;">Loading goal progress...</p>
-        </div>
-    </div>
-</div>
-
     </main>
+    
     <footer><a href="contactus.html">Contact Us</a></footer>
 </body>
 <script src="../js/main.js"></script>
