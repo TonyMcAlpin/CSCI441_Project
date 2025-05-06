@@ -117,11 +117,30 @@ const getAverageActivity = async (req, res) => {
     }
 };
 
+const getWeeklyTotalActivity = async (req, res) => {
+    const { user_id } = req.params;
+    const { week_start, week_end } = req.query;
+
+    if (!week_start || !week_end) {
+        return res.status(400).json({ message: "Missing week_start or week_end." });
+    }
+
+    try {
+        const result = await activityServices.getWeeklyTotalActivity(user_id, week_start, week_end);
+        const total_duration = result[0].total_duration || 0;
+        res.status(200).json({ total_duration });
+    } catch (err) {
+        console.error("Error fetching weekly total:", err);
+        res.status(500).json({ message: "Internal Server Error." });
+    }
+};
+
 
 export default{
     getActivity,
     addActivity,
     updateActivity,
     deleteActivity,
-    getAverageActivity
+    getAverageActivity,
+    getWeeklyTotalActivity
 }

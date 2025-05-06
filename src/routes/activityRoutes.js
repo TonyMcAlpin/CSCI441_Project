@@ -5,6 +5,7 @@ const router = express.Router();
 
 router.get("/:id", activityController.getActivity);
 router.get("/:user_id/average", activityController.getAverageActivity);  
+router.get("/total/:user_id", activityController.getWeeklyTotalActivity);
 
 
 

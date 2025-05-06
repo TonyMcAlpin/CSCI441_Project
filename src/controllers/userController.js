@@ -173,6 +173,46 @@ const getUser = async (req, res) => {
     }
 }
 
+// Get request for user goal
+const getActivityGoal = async (req, res) => {
+    try {
+        const user_id = req.params.user_id;
+        const results = await userServices.getActivityGoal(user_id);
+        const goalResult = results[0];
+
+        if (!goalResult || goalResult.activity_goal === undefined || goalResult.activity_goal === null) {
+            
+            return res.status(200).json({ goal: 0 });
+        }
+
+        res.status(200).json({ goal: goalResult.activity_goal });
+    } catch (err) {
+        console.error("Error fetching goal: ", err);
+        res.status(500).json({ message: "Internal Server Error" });
+    }
+};
+
+
+// Update and Set Goal
+
+const setActivityGoal = async (req, res) => {
+    try {
+        const user_id = req.params.user_id;
+        const { goal } = req.body;
+
+        if (!goal) {
+            return res.status(400).json({ message: "Goal is required" });
+        }
+
+        await userServices.setActivityGoal(user_id, goal);
+        res.status(200).json({ message: "Goal updated successfully" });
+    } catch (err) {
+        console.error("Error updating goal: ", err);
+        res.status(500).json({ message: "Internal Server Error" });
+    }
+};
+
+
 export default {
     registerUser,
     loginUser,
@@ -182,5 +222,9 @@ export default {
     getPatients,
     resetPassword,
     getRequests,
-    getUser 
+    getUser,
+    getActivityGoal,
+    setActivityGoal
+
+
 };
