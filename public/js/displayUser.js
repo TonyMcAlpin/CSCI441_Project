@@ -20,11 +20,18 @@ document.addEventListener('DOMContentLoaded', async function getFullName() {
             }
             const dashboardTitle = document.title;
             document.title = `${dashboardTitle} ${user.first_name} ${user.last_name}`;
-
+        }
+        else {
+            window.location.href = 'LogIn.html';
         }
 
     } catch (error) {
         console.error('Error fetching user name:', error);
+        console.error('Directing to login page.', error);
+
         alert('Error fetching user name:', error);
+        alert('Directing to login page.');
+
+        window.location.href = 'LogIn.html';
     }
 });
