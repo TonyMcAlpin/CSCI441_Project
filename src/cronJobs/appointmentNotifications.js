@@ -1,8 +1,8 @@
-import notificationService from "../services/notificationService";
+import notificationService from "../services/notificationService.js";
 import cron from 'node-cron';
 
 //Run once everyday at midnight to check for appointments that day
-cron.schedule('0 0 * * *', async () => {
+cron.schedule('30 * * * *', async () => {
     console.log('Running Appointment Check...');
 
     const appointments = await notificationService.getAppointmentsInNext24Hours();

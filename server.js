@@ -14,6 +14,7 @@ import medicationRoutes from "./src/routes/medicationRoutes.js";
 import appointmentRoutes from "./src/routes/appointmentRoutes.js";
 import activityRoutes from "./src/routes/activityRoutes.js";
 import requestRoutes from "./src/routes/requestRoutes.js";
+import './src/cronJobs/appointmentNotifications.js';
 
 
 dotenv.config();
