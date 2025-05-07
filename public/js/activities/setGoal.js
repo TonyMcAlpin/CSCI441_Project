@@ -22,6 +22,7 @@ document.getElementById("goal-form").addEventListener("submit", async (e) => {
 
         const result = await response.json();
         alert(result.message);
+        location.reload();
     } catch (err) {
         console.error("Error setting goal:", err);
         alert("Failed to set goal.");

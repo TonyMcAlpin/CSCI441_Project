@@ -24,7 +24,7 @@ app.use("/api/users", userRoutes);
 app.use("/api/medications", medicationRoutes);
 app.use("/api/appointments", appointmentRoutes);
 app.use("/api/activities", activityRoutes); 
-app.use("/api/requests", requestRoutes); 
+app.use("/api/requests", requestRoutes);
 
 
 // Set the port from environment or default to 5000

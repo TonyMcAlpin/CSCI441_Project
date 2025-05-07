@@ -22,6 +22,7 @@ document.getElementById("addActForm").addEventListener("submit", async (e) => {
 
         if(response.ok){
             alert("Activity Added Successfully!");
+            e.target.reset();
             location.reload();
         }
         else{
