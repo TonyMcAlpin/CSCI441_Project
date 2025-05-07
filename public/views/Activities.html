@@ -117,6 +117,36 @@
                 </div>
             </div>
         </div>
+
+            <!-- Edit Modal -->
+            <div class="modal fade pt-5" id="editModal" tabindex="-1" aria-hidden="true" >
+                <div class="modal-dialog" style="background-color: #ff6666; color:white;">
+                    <form class="modal-content" id="editForm" method="post">
+                        <div class="modal-header" style="background-color: #8b0000; color: white;">
+                            <h5 class="modal-title">Edit Activity</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body" style="background-color: #ff6666; color:white;">
+                            <input type="hidden" id="editId">
+                            <div class="mb-3">
+                                <label for="editDate" class="form-label">Date</label>
+                                <input type="date" class="form-control" id="editDate" name="act_date" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="editDuration" class="form-label">Duration</label>
+                                <input type="number" class="form-control" id="editDuration" name="duration" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="editDescription" class="form-label">Description</label>
+                                <input type="text" class="form-control" id="editDescription" name="comments" required>
+                            </div>
+                        </div>
+                        <div class="modal-footer mx-auto">
+                            <button type="submit" class="btn" style="background-color: #8b0000; color: white;">Save changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
     </main>
     
     <footer><a href="contactus.html">Contact Us</a></footer>
