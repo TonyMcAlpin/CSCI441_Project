@@ -3,7 +3,7 @@ document.getElementById("goal-form").addEventListener("submit", async (e) => {
     e.preventDefault();
 
     const goal = document.getElementById("goal-input").value;
-    const userId = sessionStorage.getItem("user_id"); // Use same storage as other files
+    const userId = sessionStorage.getItem("user_id"); 
 
     if (!userId) {
         console.error("User ID not found in sessionStorage.");
