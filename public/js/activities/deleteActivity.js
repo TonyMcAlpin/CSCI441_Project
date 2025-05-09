@@ -1,3 +1,8 @@
+/* written by: Anthony McAlpin 
+tested by: Anthony McAlpin 
+debugged by: Anthony McAlpin  */
+
+
 function deleteActivity(activityId) {
     if (!confirm("Are you sure you want to delete this activity?")) return;
 
