@@ -1,3 +1,7 @@
+// written by: Iris Perry
+// tested by: Iris Perry
+// debugged by: Iris Perry
+
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 
 import { loadGoalProgress, getCurrentWeekRange } from "../public/js/activities/goalProgress";

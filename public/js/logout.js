@@ -1,3 +1,7 @@
+// written by: Iris Perry
+// tested by: Iris Perry
+// debugged by: Iris Perry
+
 document.addEventListener("DOMContentLoaded", () => {
     const logoutBtn = document.getElementById("logoutBtn");
 

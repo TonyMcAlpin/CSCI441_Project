@@ -1,3 +1,7 @@
+// written by: Austin Hoelscher & Iris Perry
+// tested by: Austin Hoelscher & Iris Perry
+// debugged by: Austin Hoelscher & Iris Perry
+
 document.getElementById("addAppForm").addEventListener("submit", async (e) => {
     e.preventDefault();
 

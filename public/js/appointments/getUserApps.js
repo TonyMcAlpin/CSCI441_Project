@@ -1,3 +1,7 @@
+// written by: Austin Hoelscher & Iris Perry
+// tested by: Austin Hoelscher & Iris Perry
+// debugged by: Austin Hoelscher & Iris Perry
+
 document.addEventListener("DOMContentLoaded", async () => {
 
     // Find the calendar

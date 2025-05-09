@@ -1,3 +1,7 @@
+// written by: Austin Hoelscher & Iris Perry
+// tested by: Austin Hoelscher & Iris Perry
+// debugged by: Austin Hoelscher & Iris Perry
+
 import db from "../connections/db.js";
 
 // GET: Fetch a single appointment by its id

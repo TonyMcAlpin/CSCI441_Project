@@ -1,3 +1,7 @@
+// written by: Austin Hoelscher & Iris Perry
+// tested by: Austin Hoelscher & Iris Perry
+// debugged by: Austin Hoelscher & Iris Perry
+
 function deleteAppointment(appointmentId) {
     if (!confirm("Are you sure you want to delete this appointment?")) return;
 

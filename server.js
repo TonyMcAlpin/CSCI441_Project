@@ -1,3 +1,7 @@
+// written by: Austin Hoelscher & Iris Perry
+// written by: Austin Hoelscher & Iris Perry
+// written by: Austin Hoelscher & Iris Perry
+
 // Import userServices
 
 import path from "path";
