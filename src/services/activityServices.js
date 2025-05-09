@@ -1,3 +1,9 @@
+/* written by: Austin Hoelscher, Anthony McAlpin 
+tested by: Austin Hoelscher, Anthony McAlpin
+debugged by: Austin Hoelscher, Anthony McAlpin  */
+
+
+
 import db from "../connections/db.js";
 
 // GET: Fetch a single Activity by its id
