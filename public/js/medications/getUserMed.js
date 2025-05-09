@@ -1,3 +1,6 @@
+/* written by:  Isaac Nevarez-Saenz
+tested by: Isaac Nevarez-Saenz
+debugged by: Isaac Nevarez-Saenz */
 
 document.addEventListener("DOMContentLoaded", async () => {
 

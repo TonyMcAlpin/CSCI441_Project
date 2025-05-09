@@ -1,3 +1,7 @@
+/* written by:  Isaac Nevarez-Saenz
+tested by: Isaac Nevarez-Saenz
+debugged by: Isaac Nevarez-Saenz */
+
 import express from "express"
 import medicationController from "../controllers/medicationController.js"
 

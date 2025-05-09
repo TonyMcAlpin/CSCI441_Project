@@ -1,3 +1,7 @@
+/* written by: Isaac Nevarez-Saenz 
+tested by: Isaac Nevarez-Saenz
+debugged by: Isaac Nevarez-Saenz */
+
 function deleteMedication(medicationId) {
     if (!confirm("Are you sure you want to delete this medication?")) return;
 

@@ -1,3 +1,7 @@
+/* written by:  
+tested by: Isaac Nevarez-Saenz
+debugged by: Isaac Nevarez-Saenz */
+
 import bcrypt from "bcryptjs";
 import userServices from "../services/userServices.js";
 

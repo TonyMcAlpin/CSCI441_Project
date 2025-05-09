@@ -1,3 +1,7 @@
+/* written by:  
+tested by: Isaac Nevarez-Saenz
+debugged by: Isaac Nevarez-Saenz */
+
 import requestServices from "../services/requestServices.js"
 
 // Get Request by id

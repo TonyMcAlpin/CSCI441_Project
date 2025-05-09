@@ -1,3 +1,7 @@
+/* written by:  
+tested by: Isaac Nevarez-Saenz
+debugged by: Isaac Nevarez-Saenz */
+
 const form = document.getElementById('averageForm');
 
 form.addEventListener('submit', async (e) => {

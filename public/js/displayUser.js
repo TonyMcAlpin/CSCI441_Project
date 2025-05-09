@@ -1,3 +1,7 @@
+/* written by:  Isaac Nevarez-Saenz
+tested by: Isaac Nevarez-Saenz
+debugged by: Isaac Nevarez-Saenz */
+
 document.addEventListener('DOMContentLoaded', async function getFullName() {
 
     const user_id = sessionStorage.getItem('user_id');

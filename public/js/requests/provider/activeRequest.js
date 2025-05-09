@@ -1,3 +1,7 @@
+/* written by:  
+tested by: Isaac Nevarez-Saenz
+debugged by: Isaac Nevarez-Saenz */
+
 function closeRequest(requestId) {
 
     if (!confirm("Are you sure you want to close this request?")) return;

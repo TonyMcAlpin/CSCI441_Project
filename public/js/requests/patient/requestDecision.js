@@ -1,3 +1,7 @@
+/* written by:  
+tested by: Isaac Nevarez-Saenz
+debugged by: Isaac Nevarez-Saenz */
+
 // requestDecision.js
 const requestDecision = async (decision, request_id) => {
 

@@ -1,3 +1,7 @@
+/* written by:  
+tested by: Isaac Nevarez-Saenz
+debugged by: Isaac Nevarez-Saenz */
+
 document.getElementById("addActForm").addEventListener("submit", async (e) => {
     e.preventDefault();
 

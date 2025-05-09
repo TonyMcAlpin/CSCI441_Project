@@ -1,3 +1,7 @@
+/* written by:  
+tested by: Isaac Nevarez-Saenz
+debugged by: Isaac Nevarez-Saenz */
+
 import db from "../connections/db.js";
 import bcrypt from "bcryptjs"
 
