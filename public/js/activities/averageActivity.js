@@ -1,6 +1,6 @@
-/* written by:  
-tested by: Isaac Nevarez-Saenz
-debugged by: Isaac Nevarez-Saenz */
+/* written by: Anthony McAlpin 
+tested by: Isaac Nevarez-Saenz, Anthony McAlpin 
+debugged by: Isaac Nevarez-Saenz, Anthony McAlpin  */
 
 const form = document.getElementById('averageForm');
 
