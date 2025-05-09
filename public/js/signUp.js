@@ -1,3 +1,8 @@
+/* written by: Anthony McAlpin 
+tested by: Anthony McAlpin 
+debugged by: Anthony McAlpin  */
+
+
 document.addEventListener('DOMContentLoaded', function() {
     console.log("PHER Page Loaded");
 
