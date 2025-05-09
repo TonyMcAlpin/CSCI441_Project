@@ -1,5 +1,5 @@
 /* written by:  
-tested by: Isaac Nevarez-Saenz
+tested by: Isaac Nevarez-Saenz, Anthony McAlpin
 debugged by: Isaac Nevarez-Saenz */ 
 
 import db from "../connections/db.js";
