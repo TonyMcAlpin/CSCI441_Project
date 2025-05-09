@@ -1,3 +1,8 @@
+/* written by: Anthony McAlpin 
+tested by: Anthony McAlpin 
+debugged by: Anthony McAlpin  */
+
+
 // Sets goal for duration of activity
 document.getElementById("goal-form").addEventListener("submit", async (e) => {
     e.preventDefault();
