@@ -1,3 +1,8 @@
+/* written by: Austin Hoelscher, Anthony McAlpin 
+tested by: Austin Hoelscher, Anthony McAlpin 
+debugged by: Austin Hoelscher, Anthony McAlpin  */
+
+
 import activityServices from "../services/activityServices.js";
 
 const getActivity = async (req, res) => {
