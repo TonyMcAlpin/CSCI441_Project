@@ -1,4 +1,6 @@
-
+/* written by: Anthony McAlpin 
+tested by: Anthony McAlpin 
+debugged by: Anthony McAlpin  */
 function getCurrentWeekRange() {
     const today = new Date();
     const day = today.getDay(); 
