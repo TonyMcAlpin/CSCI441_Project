@@ -19,3 +19,6 @@ function deleteMedication(medicationId) {
 }
 
 window.deleteMedication = deleteMedication;
+
+// export function for testing
+export { deleteMedication };

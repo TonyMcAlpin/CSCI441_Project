@@ -66,3 +66,5 @@ const getPatientActivities = async (patient_id) => {
 
 
 window.getPatientActivities = getPatientActivities;
+
+export {getPatientActivities};

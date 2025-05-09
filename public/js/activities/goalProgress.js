@@ -47,3 +47,5 @@ async function loadGoalProgress() {
 }
 
 document.addEventListener("DOMContentLoaded", loadGoalProgress);
+
+export {loadGoalProgress, getCurrentWeekRange};

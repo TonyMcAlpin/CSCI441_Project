@@ -19,3 +19,5 @@ function deleteActivity(activityId) {
 
 window.deleteActivity = deleteActivity;
 
+// export function for testing
+export { deleteActivity };

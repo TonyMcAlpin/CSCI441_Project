@@ -111,3 +111,5 @@ const getPatientAppointments = async (patient_id) => {
 
 
 window.getPatientAppointments = getPatientAppointments;
+
+export {getPatientAppointments};
