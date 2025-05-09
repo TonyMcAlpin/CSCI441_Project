@@ -1,6 +1,6 @@
-/* written by:  
-tested by: Isaac Nevarez-Saenz
-debugged by: Isaac Nevarez-Saenz */
+/* written by: Austin Hoelscher, Anthony McAlpin 
+tested by: Austin Hoelscher, Anthony McAlpin, Isaac Nevarez-Saenz
+debugged by: Austin Hoelscher, Anthony McAlpin, Isaac Nevarez-Saenz  */
 
 import db from "../connections/db.js";
 import bcrypt from "bcryptjs"
