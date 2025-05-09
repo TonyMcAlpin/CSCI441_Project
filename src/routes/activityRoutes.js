@@ -1,3 +1,9 @@
+/* written by: Austin Hoelscher, Anthony McAlpin 
+tested by: Austin Hoelscher, Anthony McAlpin 
+debugged by: Austin Hoelscher, Anthony McAlpin */
+
+
+
 import express from "express"
 import activityController from "../controllers/activityController.js"
 
