@@ -1,3 +1,7 @@
+/* written by: Austin Hoelscher
+tested by: Austin Hoelscher
+debugged by: Austin Hoelscher  */
+
 const getPatientMedications = async (patient_id) => {
 
     const tableHeaders = document.getElementById("tableHeaders");

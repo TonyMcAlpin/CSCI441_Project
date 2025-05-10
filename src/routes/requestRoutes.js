@@ -1,6 +1,6 @@
-/* written by:  
-tested by: Isaac Nevarez-Saenz
-debugged by: Isaac Nevarez-Saenz */
+/* written by: Austin Hoelscher 
+tested by: Isaac Nevarez-Saenz, Austin Hoelscher 
+debugged by: Isaac Nevarez-Saenz, Austin Hoelscher  */
 
 import express from "express"
 import requestController from "../controllers/requestController.js"

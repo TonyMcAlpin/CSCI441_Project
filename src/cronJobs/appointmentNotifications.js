@@ -1,3 +1,7 @@
+/* written by: Austin Hoelscher
+tested by: Austin Hoelscher
+debugged by: Austin Hoelscher  */
+
 import notificationService from "../services/notificationService.js";
 import cron from 'node-cron';
 

@@ -1,3 +1,7 @@
+// written by: Austin Hoelscher
+// tested by: Austin Hoelscher & Iris Perry
+// debugged by: Austin Hoelscher & Iris Perry
+
 import medicationServices from "../services/medicationServices.js";
 
 //GET: Get a specific medication entry

@@ -1,4 +1,4 @@
-/* written by:  
+/* written by: Austin Hoelscher 
 tested by: Isaac Nevarez-Saenz, Anthony McAlpin
 debugged by: Isaac Nevarez-Saenz */ 
 

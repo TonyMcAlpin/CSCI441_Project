@@ -1,3 +1,7 @@
+/* written by: Austin Hoelscher
+tested by: Austin Hoelscher
+debugged by: Austin Hoelscher  */
+
 import mysql from "mysql2/promise.js";
 import config from "./config.js";
 

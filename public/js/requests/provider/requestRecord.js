@@ -1,3 +1,7 @@
+/* written by: Austin Hoelscher
+tested by: Austin Hoelscher
+debugged by: Austin Hoelscher  */
+
 document.getElementById("recordRequest").addEventListener("submit", async (e) => {
     e.preventDefault();
 

@@ -1,3 +1,7 @@
+/* written by: Anthony McAlpin 
+tested by: Anthony McAlpin 
+debugged by: Anthony McAlpin  */
+
 document.getElementById("loginForm").addEventListener("submit", async (e) => {
     e.preventDefault(); 
 
