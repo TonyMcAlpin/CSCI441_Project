@@ -11,7 +11,7 @@ PHER is a web-based application designed for patients to keep their own healthca
 
 ### Local Development
 1. Start the server: `nodemon server.js`
-2. Install the Live Server VSCode extension.
+2. Install the Live Server VSCode extension or visit localhost:5000/ in your browser.
 3. Launch Live Server.
 4. Create a new user account.
 5. Login to your new user account.
